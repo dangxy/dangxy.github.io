@@ -877,6 +877,423 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/27/initialization-of-an-arraylist-in-one-line/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dangxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/27/initialization-of-an-arraylist-in-one-line/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-27T10:24:34+08:00">
+                2016-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>如何用一行代码初始化一个ArrayList</p>
+<p>###问题<br>为了测试，我需要临时快速创建一个list。一开始我这样做：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; places = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">places.add(<span class="string">"Buenos Aires"</span>);</div><div class="line">places.add(<span class="string">"Córdoba"</span>);</div><div class="line">places.add(<span class="string">"La Plata"</span>);</div></pre></td></tr></table></figure></p>
+<p>之后我重构了下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; places = <span class="keyword">new</span> ArrayList&lt;String&gt;(</div><div class="line">    Arrays.asList(<span class="string">"Buenos Aires"</span>, <span class="string">"Córdoba"</span>, <span class="string">"La Plata"</span>));</div></pre></td></tr></table></figure></p>
+<p>是否有更加简便的方法呢？</p>
+<p>###回答</p>
+<p>####常见方式<br>实际上，也许“最好”的方式，就是你写的这个方式，因为它不用再创建新的<code>List</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;();</div><div class="line">list.add(&quot;A&quot;);</div><div class="line">list.add(&quot;B&quot;);</div><div class="line">list.add(&quot;C&quot;);</div></pre></td></tr></table></figure></p>
+<p>只是这个方式看上去要多写些代码，让人郁闷</p>
+<p>####匿名内部类<br>当然，还有其他方式，例如,写一个匿名内部类，然后在其中做初始化（也被称为 brace initialization）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;() &#123;&#123;</div><div class="line">    add(&quot;A&quot;);</div><div class="line">    add(&quot;B&quot;);</div><div class="line">    add(&quot;C&quot;);</div><div class="line">&#125;&#125;;</div></pre></td></tr></table></figure></p>
+<p>但是，我不喜欢这个方式。只是为了做个初始化，却要在<code>ArrayList</code>的同一行后面加这么一坨代码。</p>
+<p>####Arrays.asList<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; places = Arrays.asList(&quot;Buenos Aires&quot;, &quot;Córdoba&quot;, &quot;La Plata&quot;);</div></pre></td></tr></table></figure></p>
+<p>####Collections.singletonList<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; places = Collections.singletonList(&quot;Buenos Aires&quot;);</div></pre></td></tr></table></figure></p>
+<p>注意：后面的这两种方式，得到的是一个定长的<code>List</code>(如果add操作会抛异常）。如果你需要一个不定长的<code>List</code>,可以这样做：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; places = new ArrayList&lt;&gt;(Arrays.asList(&quot;Buenos Aires&quot;, &quot;Córdoba&quot;, &quot;La Plata&quot;));</div></pre></td></tr></table></figure></p>
+<p>stackoverflow链接：<br><a href="http://stackoverflow.com/questions/1005073/initialization-of-an-arraylist-in-one-line" target="_blank" rel="external">http://stackoverflow.com/questions/1005073/initialization-of-an-arraylist-in-one-line</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/27/is-there-a-unique-android-device-id/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dangxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/27/is-there-a-unique-android-device-id/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-27T10:24:34+08:00">
+                2016-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##如何获取Android设备唯一ID？</p>
+<p>###问题<br>每一个android设备都有唯一ID吗？如果有？怎么用java最简单取得呢？</p>
+<p>###回答1（最佳）</p>
+<p>如何取得android唯一码？</p>
+<p>好处：</p>
+<ul>
+<li>1.不需要特定权限.</li>
+<li>2.在99.5% Android装置（包括root过的）上，即API =&gt; 9，保证唯一性.</li>
+<li>3.重装app之后仍能取得相同唯一值.</li>
+</ul>
+<p>伪代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">if API =&gt; 9/10: (99.5% of devices)</div><div class="line"></div><div class="line">return unique ID containing serial id (rooted devices may be different)</div><div class="line"></div><div class="line">else</div><div class="line"></div><div class="line">return unique ID of build information (may overlap data - API &lt; 9)</div></pre></td></tr></table></figure>
+<p>代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Return pseudo unique ID</div><div class="line"> * <span class="doctag">@return</span> ID</div><div class="line"> */<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getUniquePsuedoID</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// If all else fails, if the user does have lower than API 9 (lower</span></div><div class="line">    <span class="comment">// than Gingerbread), has reset their device or 'Secure.ANDROID_ID'</span></div><div class="line">    <span class="comment">// returns 'null', then simply the ID returned will be solely based</span></div><div class="line">    <span class="comment">// off their Android device information. This is where the collisions</span></div><div class="line">    <span class="comment">// can happen.</span></div><div class="line">    <span class="comment">// Thanks http://www.pocketmagic.net/?p=1662!</span></div><div class="line">    <span class="comment">// Try not to use DISPLAY, HOST or ID - these items could change.</span></div><div class="line">    <span class="comment">// If there are collisions, there will be overlapping data</span></div><div class="line">    String m_szDevIDShort = <span class="string">"35"</span> + (Build.BOARD.length() % <span class="number">10</span>) + (Build.BRAND.length() % <span class="number">10</span>) + (Build.CPU_ABI.length() % <span class="number">10</span>) + (Build.DEVICE.length() % <span class="number">10</span>) + (Build.MANUFACTURER.length() % <span class="number">10</span>) + (Build.MODEL.length() % <span class="number">10</span>) + (Build.PRODUCT.length() % <span class="number">10</span>);</div><div class="line"></div><div class="line">    <span class="comment">// Thanks to @Roman SL!</span></div><div class="line">    <span class="comment">// http://stackoverflow.com/a/4789483/950427</span></div><div class="line">    <span class="comment">// Only devices with API &gt;= 9 have android.os.Build.SERIAL</span></div><div class="line">    <span class="comment">// http://developer.android.com/reference/android/os/Build.html#SERIAL</span></div><div class="line">    <span class="comment">// If a user upgrades software or roots their device, there will be a duplicate entry</span></div><div class="line">    String serial = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        serial = android.os.Build.class.getField(<span class="string">"SERIAL"</span>).get(<span class="keyword">null</span>).toString();</div><div class="line"></div><div class="line">        <span class="comment">// Go ahead and return the serial for api =&gt; 9</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();</div><div class="line">    &#125; <span class="keyword">catch</span> (Exception exception) &#123;</div><div class="line">        <span class="comment">// String needs to be initialized</span></div><div class="line">        serial = <span class="string">"serial"</span>; <span class="comment">// some value</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Thanks @Joe!</span></div><div class="line">    <span class="comment">// http://stackoverflow.com/a/2853253/950427</span></div><div class="line">    <span class="comment">// Finally, combine the values we have found by using the UUID class to create a unique identifier</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();&#125;</div></pre></td></tr></table></figure>
+<p>###回答2<br>好处：</p>
+<ul>
+<li>1.不需要特定权限.</li>
+<li>2.在100% Android装置（包括root过的）上，保证唯一性.</li>
+</ul>
+<p>坏处</p>
+<ul>
+<li>1.重装app之后不能取得相同唯一值.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> String uniqueID = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String PREF_UNIQUE_ID = <span class="string">"PREF_UNIQUE_ID"</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> String <span class="title">id</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (uniqueID == <span class="keyword">null</span>) &#123;</div><div class="line">        SharedPreferences sharedPrefs = context.getSharedPreferences(</div><div class="line">                PREF_UNIQUE_ID, Context.MODE_PRIVATE);</div><div class="line">        uniqueID = sharedPrefs.getString(PREF_UNIQUE_ID, <span class="keyword">null</span>);</div><div class="line">        <span class="keyword">if</span> (uniqueID == <span class="keyword">null</span>) &#123;</div><div class="line">            uniqueID = UUID.randomUUID().toString();</div><div class="line">            Editor editor = sharedPrefs.edit();</div><div class="line">            editor.putString(PREF_UNIQUE_ID, uniqueID);</div><div class="line">            editor.commit();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> uniqueID;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>###回答3（需要有电话卡）</p>
+<p>好处：<br>1.重装app之后仍能取得相同唯一值.</p>
+<p>代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> TelephonyManager tm = (TelephonyManager) getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);</div><div class="line"><span class="keyword">final</span> String tmDevice, tmSerial, androidId;</div><div class="line">tmDevice = <span class="string">""</span> + tm.getDeviceId();</div><div class="line">tmSerial = <span class="string">""</span> + tm.getSimSerialNumber();</div><div class="line">androidId = <span class="string">""</span> + android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);</div><div class="line">UUID deviceUuid = <span class="keyword">new</span> UUID(androidId.hashCode(), ((<span class="keyword">long</span>)tmDevice.hashCode() &lt;&lt; <span class="number">32</span>) | tmSerial.hashCode());</div><div class="line">String deviceId = deviceUuid.toString();</div></pre></td></tr></table></figure>
+<p>谨记：要取得以下权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=&quot;android.permission.READ_PHONE_STATE&quot; /&gt;</div></pre></td></tr></table></figure></p>
+<p>stackoverflow链接：<br><a href="http://stackoverflow.com/questions/2785485/is-there-a-unique-android-device-id" target="_blank" rel="external">http://stackoverflow.com/questions/2785485/is-there-a-unique-android-device-id</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/27/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dangxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/27/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-27T10:24:34+08:00">
+                2016-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##重写（Override）equlas和hashCode方法时应考虑的问题</p>
+<p>###理论上讲（编程语言、数学层面）<br>equals() 定义了对象的相等关系（自反性、对称性、传递性）（有点抽象，更详细说明，请参考<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#equals(java.lang.Object" target="_blank" rel="external">javadoc</a>)) 。<br>另外，它还具有一致性（也就是说，如果一个对象没有修改，那么对象的equals方法，应总是返回相同的值），此外，o.equals(null)应当总是返回false。<br>hashCode()（<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#hashCode(" target="_blank" rel="external">javadoc</a>))也必须具备一致性的（也就是说，如果equal的结果没有变，那么hashcode()也应总是返回相同的值）</p>
+<p>总的来说，这两个方法的关系：</p>
+<p><strong>假如a.equals(b)，那么a.hashCode() 应等于b.hashCode()</strong></p>
+<p>###实践上讲</p>
+<p><strong>如果你重写了其中一个方法，那么务必重写另外一个方法</strong></p>
+<p>equals()和hashCode()所计算的属性集（set of fields）应当是一样的<br>如何更快地重写这两个方法呢？</p>
+<ol>
+<li><p>使用<a href="http://commons.apache.org/lang/" target="_blank" rel="external">Apache Commons Lang library</a>中的<a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/EqualsBuilder.html" target="_blank" rel="external">EqualsBuilder</a>、<a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/HashCodeBuilder.html" target="_blank" rel="external">HashCodeBuilder</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</div><div class="line">    <span class="comment">// ...</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> HashCodeBuilder(<span class="number">17</span>, <span class="number">31</span>). <span class="comment">// two randomly chosen prime numbers</span></div><div class="line">            <span class="comment">// if deriving: appendSuper(super.hashCode()).</span></div><div class="line">            append(name).</div><div class="line">            append(age).</div><div class="line">            toHashCode();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (!(obj <span class="keyword">instanceof</span> Person))</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">if</span> (obj == <span class="keyword">this</span>)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line"></div><div class="line">        Person rhs = (Person) obj;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> EqualsBuilder().</div><div class="line">            <span class="comment">// if deriving: appendSuper(super.equals(obj)).</span></div><div class="line">            append(name, rhs.name).</div><div class="line">            append(age, rhs.age).</div><div class="line">            isEquals();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果你是用eclipse，可以在代码编辑区右键，然后选择 Source &gt; Generate hashCode() and equals()</p>
+</li>
+</ol>
+<p><strong>另外请记得</strong></p>
+<p>当你使用一些基于Hash的 Collection 、 Map，例如HashSet, LinkedHashSet, HashMap, Hashtable, 、WeakHashMap等。在键值对被放到集合中之后，请确保其key值所对应的hashCode()是保持不变的。比较可靠的一个办法，是保持这些key是不可变的，这也能带来不少好处</p>
+<p>stackoverflow链接：<br><a href="http://stackoverflow.com/questions/27581/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java" target="_blank" rel="external">http://stackoverflow.com/questions/27581/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -922,7 +1339,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
