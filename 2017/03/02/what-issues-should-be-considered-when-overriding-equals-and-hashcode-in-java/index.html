@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="javscript,test," />
 
 
 
@@ -91,14 +91,15 @@
 
 
 <meta name="description" content="##重写（Override）equlas和hashCode方法时应考虑的问题 ###理论上讲（编程语言、数学层面）equals() 定义了对象的相等关系（自反性、对称性、传递性）（有点抽象，更详细说明，请参考javadoc)) 。另外，它还具有一致性（也就是说，如果一个对象没有修改，那么对象的equals方法，应总是返回相同的值），此外，o.equals(null)应当总是返回false。hash">
+<meta name="keywords" content="javscript,test">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/2016/03/27/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:title" content="(Override）equlas和hashCode方法时应考虑的问题">
+<meta property="og:url" content="http://yoursite.com/2017/03/02/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java/index.html">
+<meta property="og:site_name" content="党学义的博客">
 <meta property="og:description" content="##重写（Override）equlas和hashCode方法时应考虑的问题 ###理论上讲（编程语言、数学层面）equals() 定义了对象的相等关系（自反性、对称性、传递性）（有点抽象，更详细说明，请参考javadoc)) 。另外，它还具有一致性（也就是说，如果一个对象没有修改，那么对象的equals方法，应总是返回相同的值），此外，o.equals(null)应当总是返回false。hash">
-<meta property="og:updated_time" content="2016-03-27T02:24:34.000Z">
+<meta property="og:updated_time" content="2017-05-03T12:18:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="(Override）equlas和hashCode方法时应考虑的问题">
 <meta name="twitter:description" content="##重写（Override）equlas和hashCode方法时应考虑的问题 ###理论上讲（编程语言、数学层面）equals() 定义了对象的相等关系（自反性、对称性、传递性）（有点抽象，更详细说明，请参考javadoc)) 。另外，它还具有一致性（也就是说，如果一个对象没有修改，那么对象的equals方法，应总是返回相同的值），此外，o.equals(null)应当总是返回false。hash">
 
 
@@ -127,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/03/27/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/02/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java/"/>
 
 
 
 
 
-  <title> | Hexo</title>
+  <title>党学义的技术博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -169,7 +170,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">111111111111111</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -252,7 +253,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/27/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/02/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dangxy">
@@ -261,7 +262,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="党学义的博客">
     </span>
 
     
@@ -273,7 +274,7 @@
             
             
               
-                
+                (Override）equlas和hashCode方法时应考虑的问题
               
             
           </h1>
@@ -288,8 +289,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-27T10:24:34+08:00">
-                2016-03-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-02T10:00:54+08:00">
+                2017-03-02
               </time>
             
 
@@ -298,6 +299,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -327,8 +350,7 @@
 <p>###理论上讲（编程语言、数学层面）<br>equals() 定义了对象的相等关系（自反性、对称性、传递性）（有点抽象，更详细说明，请参考<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#equals(java.lang.Object" target="_blank" rel="external">javadoc</a>)) 。<br>另外，它还具有一致性（也就是说，如果一个对象没有修改，那么对象的equals方法，应总是返回相同的值），此外，o.equals(null)应当总是返回false。<br>hashCode()（<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#hashCode(" target="_blank" rel="external">javadoc</a>))也必须具备一致性的（也就是说，如果equal的结果没有变，那么hashcode()也应总是返回相同的值）</p>
 <p>总的来说，这两个方法的关系：</p>
 <p><strong>假如a.equals(b)，那么a.hashCode() 应等于b.hashCode()</strong></p>
-<p>###实践上讲</p>
-<p><strong>如果你重写了其中一个方法，那么务必重写另外一个方法</strong></p>
+<p>###实践上讲<br>  <!-- 阅读全文 -->    ​<br><strong>如果你重写了其中一个方法，那么务必重写另外一个方法</strong></p>
 <p>equals()和hashCode()所计算的属性集（set of fields）应当是一样的<br>如何更快地重写这两个方法呢？</p>
 <ol>
 <li><p>使用<a href="http://commons.apache.org/lang/" target="_blank" rel="external">Apache Commons Lang library</a>中的<a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/EqualsBuilder.html" target="_blank" rel="external">EqualsBuilder</a>、<a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/HashCodeBuilder.html" target="_blank" rel="external">HashCodeBuilder</a></p>
@@ -367,6 +389,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/javscript/" rel="tag"># javscript</a>
+          
+            <a href="/tags/test/" rel="tag"># test</a>
+          
+        </div>
+      
 
       
         
@@ -376,14 +406,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/02/工作中遇到的问题(1)/" rel="next" title="工作中遇到的问题(持续更新中)">
+                <i class="fa fa-chevron-left"></i> 工作中遇到的问题(持续更新中)
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/27/is-there-a-unique-android-device-id/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/03/学习计划/" rel="prev" title="如何获取Android设备唯一ID？">
+                如何获取Android设备唯一ID？ <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -435,7 +469,7 @@
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="/images/avatar.jpg"
                alt="dangxy" />
           <p class="site-author-name" itemprop="name">dangxy</p>
            
@@ -454,7 +488,25 @@
           
 
           
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
           
 
         </nav>
