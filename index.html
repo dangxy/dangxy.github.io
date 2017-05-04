@@ -167,7 +167,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">111111111111111</span>
+        <span class="site-title">avatar.jpg</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -240,137 +240,6 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/03/initialization-of-an-arraylist-in-one-line/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dangxy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="党学义的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/03/initialization-of-an-arraylist-in-one-line/" itemprop="url">
-                  如何用一行代码初始化一个ArrayList
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-03T20:06:15+08:00">
-                2017-05-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="如何用一行代码初始化一个ArrayList"><a href="#如何用一行代码初始化一个ArrayList" class="headerlink" title="如何用一行代码初始化一个ArrayList"></a>如何用一行代码初始化一个ArrayList</h2><p>###问题<br>为了测试，我需要临时快速创建一个list。一开始我这样做：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; places = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">places.add(<span class="string">"Buenos Aires"</span>);</div><div class="line">places.add(<span class="string">"Córdoba"</span>);</div><div class="line">places.add(<span class="string">"La Plata"</span>);</div></pre></td></tr></table></figure></p>
-  <!-- 阅读全文 -->    ​<br>之后我重构了下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; places = <span class="keyword">new</span> ArrayList&lt;String&gt;(</div><div class="line">    Arrays.asList(<span class="string">"Buenos Aires"</span>, <span class="string">"Córdoba"</span>, <span class="string">"La Plata"</span>));</div></pre></td></tr></table></figure>
-<p>是否有更加简便的方法呢？</p>
-<p>###回答</p>
-<p>####常见方式<br>实际上，也许“最好”的方式，就是你写的这个方式，因为它不用再创建新的<code>List</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;();</div><div class="line">list.add(&quot;A&quot;);</div><div class="line">list.add(&quot;B&quot;);</div><div class="line">list.add(&quot;C&quot;);</div></pre></td></tr></table></figure></p>
-<p>只是这个方式看上去要多写些代码，让人郁闷</p>
-<p>####匿名内部类<br>当然，还有其他方式，例如,写一个匿名内部类，然后在其中做初始化（也被称为 brace initialization）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;() &#123;&#123;</div><div class="line">    add(&quot;A&quot;);</div><div class="line">    add(&quot;B&quot;);</div><div class="line">    add(&quot;C&quot;);</div><div class="line">&#125;&#125;;</div></pre></td></tr></table></figure></p>
-<p>但是，我不喜欢这个方式。只是为了做个初始化，却要在<code>ArrayList</code>的同一行后面加这么一坨代码。</p>
-<p>####Arrays.asList<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; places = Arrays.asList(&quot;Buenos Aires&quot;, &quot;Córdoba&quot;, &quot;La Plata&quot;);</div></pre></td></tr></table></figure></p>
-<p>####Collections.singletonList<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; places = Collections.singletonList(&quot;Buenos Aires&quot;);</div></pre></td></tr></table></figure></p>
-<p>注意：后面的这两种方式，得到的是一个定长的<code>List</code>(如果add操作会抛异常）。如果你需要一个不定长的<code>List</code>,可以这样做：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; places = new ArrayList&lt;&gt;(Arrays.asList(&quot;Buenos Aires&quot;, &quot;Córdoba&quot;, &quot;La Plata&quot;));</div></pre></td></tr></table></figure></p>
-<p>stackoverflow链接：<br><a href="http://stackoverflow.com/questions/1005073/initialization-of-an-arraylist-in-one-line" target="_blank" rel="external">http://stackoverflow.com/questions/1005073/initialization-of-an-arraylist-in-one-line</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
     
       
 
@@ -456,91 +325,23 @@
 
       
         
-          
-            <ul>
-<li><p>每天学习两篇博客文章</p>
-<ul>
-<li><p>[x] <a href="http://blog.csdn.net/lmj623565791/article/details/51339751" target="_blank" rel="external">巧用ViewPager 打造不一样的广告轮播切换效果</a></p>
-<pre><code>总结:
-
-- viewpager 要实现显示多个条目 需要设置viewpager的外层的布局文件和viewpager都要设置为false
-
-  &gt; 设置相应的属性即可
-  &gt;
-  &gt;  设置viewpager的移动动画
-  &gt;
-  &gt; android:clipChildren=&quot;false&quot;
-  &gt;
-  &gt; viewPager.setPageTransformer
-</code></pre>  <!-- 阅读全文 -->    ​<br><br>    - 实现透明<br><br>      &gt; 实现 AlphaPageTransformer implements ViewPager.PageTransformer<br>      &gt;<br>      &gt; 调用 viewPager.setPageTransformer(new AlphaPageTransformer());<br><br>      ​<br><br>      <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_MIN_ALPHA = <span class="number">0.5f</span>;</div><div class="line"><span class="keyword">private</span> <span class="keyword">float</span> mMinAlpha = DEFAULT_MIN_ALPHA;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pageTransform</span><span class="params">(View view, <span class="keyword">float</span> position)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (position &lt; -<span class="number">1</span>)</div><div class="line">    &#123; </div><div class="line">        view.setAlpha(mMinAlpha);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (position &lt;= <span class="number">1</span>)</div><div class="line">    &#123; <span class="comment">// [-1,1]</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> (position &lt; <span class="number">0</span>) <span class="comment">//[0，-1]</span></div><div class="line">        &#123; </div><div class="line">            <span class="keyword">float</span> factor = mMinAlpha + (<span class="number">1</span> - mMinAlpha) * (<span class="number">1</span> + position);</div><div class="line">            view.setAlpha(factor);</div><div class="line">        &#125; <span class="keyword">else</span><span class="comment">//[1，0]</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">float</span> factor = mMinAlpha + (<span class="number">1</span> - mMinAlpha) * (<span class="number">1</span> - position);</div><div class="line">            view.setAlpha(factor);</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span></div><div class="line">    &#123; <span class="comment">// (1,+Infinity]</span></div><div class="line">        view.setAlpha(mMinAlpha);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<pre><code>- 实现缩小
-
-  &gt; view.setSacleX();
-  &gt;
-  &gt; view.setScaleY();
-
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ZoomOutPageTransformer</span> <span class="keyword">implements</span> <span class="title">ViewPager</span>.<span class="title">PageTransformer</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> MIN_SCALE = <span class="number">0.70f</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> MIN_ALPHA = <span class="number">0.5f</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">transformPage</span><span class="params">(View view, <span class="keyword">float</span> position)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> pageWidth = view.getWidth();</div><div class="line">        <span class="keyword">int</span> pageHeight = view.getHeight();</div><div class="line">        <span class="keyword">if</span> (position &lt; -<span class="number">1</span>) &#123; <span class="comment">// [-Infinity,-1)</span></div><div class="line">            <span class="comment">// This page is way off-screen to the left.</span></div><div class="line">            view.setAlpha(MIN_ALPHA);</div><div class="line">            view.setScaleX(MIN_SCALE);</div><div class="line">            view.setScaleY(MIN_SCALE);</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (position &lt;= <span class="number">1</span>) &#123; <span class="comment">// [-1,1]</span></div><div class="line">            <span class="comment">// Modify the default slide transition to shrink the page as well</span></div><div class="line">            <span class="keyword">float</span> scaleFactor = Math.max(MIN_SCALE, <span class="number">1</span> - Math.abs(position));</div><div class="line">            <span class="keyword">float</span> vertMargin = pageHeight * (<span class="number">1</span> - scaleFactor) / <span class="number">2</span>;</div><div class="line">            <span class="keyword">float</span> horzMargin = pageWidth * (<span class="number">1</span> - scaleFactor) / <span class="number">2</span>;</div><div class="line">            <span class="keyword">if</span> (position &lt; <span class="number">0</span>) &#123;</div><div class="line">                view.setTranslationX(horzMargin - vertMargin / <span class="number">2</span>);</div><div class="line">                view.setScaleX(<span class="number">1</span> + <span class="number">0.3f</span> * position);</div><div class="line">                view.setScaleY(<span class="number">1</span> + <span class="number">0.3f</span> * position);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                view.setTranslationX(-horzMargin + vertMargin / <span class="number">2</span>);</div><div class="line"></div><div class="line">                view.setScaleX(<span class="number">1</span> - <span class="number">0.3f</span> * position);</div><div class="line">                view.setScaleY(<span class="number">1</span> - <span class="number">0.3f</span> * position);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="comment">// Scale the page down (between MIN_SCALE and 1)</span></div><div class="line"></div><div class="line">            <span class="comment">// Fade the page relative to its size.</span></div><div class="line">            view.setAlpha(MIN_ALPHA + (scaleFactor - MIN_SCALE) / (<span class="number">1</span> - MIN_SCALE) * (<span class="number">1</span> - MIN_ALPHA));</div><div class="line"></div><div class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// (1,+Infinity]</span></div><div class="line">            <span class="comment">// This page is way off-screen to the right.</span></div><div class="line">            view.setScaleX(MIN_SCALE);</div><div class="line">            view.setScaleY(MIN_SCALE);</div><div class="line">            view.setAlpha(MIN_ALPHA);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-  ​
-
-- 实现旋转
-
-  &gt; view.setPivotX();
-  &gt;
-  &gt; view.setPivotY();
-
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_MAX_ROTATE = <span class="number">15.0f</span>;</div><div class="line"><span class="keyword">private</span> <span class="keyword">float</span> mMaxRotate = DEFAULT_MAX_ROTATE;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pageTransform</span><span class="params">(View view, <span class="keyword">float</span> position)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (position &lt; -<span class="number">1</span>)</div><div class="line">    &#123; <span class="comment">// [-Infinity,-1)</span></div><div class="line">        <span class="comment">// This page is way off-screen to the left.  </span></div><div class="line">        view.setRotation(mMaxRotate * -<span class="number">1</span>);</div><div class="line">        view.setPivotX(view.getWidth());</div><div class="line">        view.setPivotY(view.getHeight());</div><div class="line"></div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (position &lt;= <span class="number">1</span>)</div><div class="line">    &#123; <span class="comment">// [-1,1]  </span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> (position &lt; <span class="number">0</span>)<span class="comment">//[-1，0]</span></div><div class="line">        &#123;</div><div class="line">            view.setPivotX(view.getWidth() * (<span class="number">0.5f</span> + <span class="number">0.5f</span> * (-position)));</div><div class="line">            view.setPivotY(view.getHeight());</div><div class="line">            view.setRotation(mMaxRotate * position);</div><div class="line">        &#125; <span class="keyword">else</span><span class="comment">//[0,1]</span></div><div class="line">        &#123;</div><div class="line">            view.setPivotX(view.getWidth() * <span class="number">0.5f</span> * (<span class="number">1</span> - position));</div><div class="line">            view.setPivotY(view.getHeight());</div><div class="line">            view.setRotation(mMaxRotate * position);</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span></div><div class="line">    &#123; <span class="comment">// (1,+Infinity]  </span></div><div class="line">        <span class="comment">// This page is way off-screen to the right.  </span></div><div class="line">        view.setRotation(mMaxRotate);</div><div class="line">        view.setPivotX(view.getWidth() * <span class="number">0</span>);</div><div class="line">        view.setPivotY(view.getHeight());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre></li>
-</ul>
+          <ul>
+<li><p>获取LayoutInflater 的两种方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">LayoutInflater inflater = getLayoutInflater()；</div><div class="line">LayoutInflater inflater = (LayoutInflater)</div><div class="line">mContext.getSystemService(LAYOUT_INFLATER_SERVICE);</div></pre></td></tr></table></figure>
 </li>
-<li><p>[x] <a href="http://blog.csdn.net/lmj623565791/article/details/51503977" target="_blank" rel="external">Android 探究 LayoutInflater setFactory</a></p>
-<pre><code>  总结：
-
-- 可以获取相关的属性  
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">LayoutInflaterCompat.setFactory(LayoutInflater.from(<span class="keyword">this</span>), <span class="keyword">new</span> LayoutInflaterFactory()</div><div class="line">        &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(View parent, String name, Context context, AttributeSet attrs)</span></span></div><div class="line">            &#123;</div><div class="line">                Log.e(TAG, <span class="string">"name = "</span> + name);</div><div class="line">                <span class="keyword">int</span> n = attrs.getAttributeCount();</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</div><div class="line">                &#123;</div><div class="line">                    Log.e(TAG, attrs.getAttributeName(i) + <span class="string">" , "</span> + attrs.getAttributeValue(i));</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
-
-- 可以进行相关的替换 将xml中的相关的TextView 替换为自定义的TextView
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (name.equals(<span class="string">"TextView"</span>))</div><div class="line">&#123;</div><div class="line">    MyTextView view = <span class="keyword">new</span> com.zhy.MyTextView(context,attrs);</div><div class="line">    <span class="keyword">return</span> view;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-- 获取字体
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (typeface == <span class="keyword">null</span>)</div><div class="line">    &#123;</div><div class="line">        typeface = Typeface.createFromAsset(getAssets(), <span class="string">"hwxk.ttf"</span>);</div><div class="line">    &#125;</div><div class="line"><span class="comment">//设置相应的字体</span></div><div class="line"> <span class="keyword">if</span> ( view!= <span class="keyword">null</span> &amp;&amp; (view <span class="keyword">instanceof</span> TextView))</div><div class="line">      &#123;</div><div class="line">                ((TextView) view).setTypeface(typeface);</div><div class="line">      &#125;</div></pre></td></tr></table></figure>
-</code></pre></li>
-<li><p>看Android相关的书籍（一个小时）</p>
-<ul>
-<li>[ ] Android 群英会</li>
-</ul>
-</li>
-<li><p>写代码</p>
-</li>
-<li><p>学习总结</p>
-<p>  其他：</p>
-<ul>
-<li>获取LayoutInflater 的两种方法</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>.  LayoutInflater inflater = getLayoutInflater()；</div><div class="line"><span class="number">2</span>.  LayoutInflater inflater = (LayoutInflater)</div><div class="line">     mContext.getSystemService(LAYOUT_INFLATER_SERVICE);</div></pre></td></tr></table></figure>
-<ul>
-<li>设置全屏的两种方法,代码设置</li>
-</ul>
+<li><p>设置全屏的两种方法,代码设置</p>
 <p>这行代码必须设置在setConentView(R.layout.main) 之前</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">requestWindowFeature(Window.FEATURE_NO_TITLE);</div><div class="line">getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN ,   WindowManager.LayoutParams. FLAG_FULLSCREEN);</div></pre></td></tr></table></figure>
-<ul>
-<li>布局文件设置</li>
-</ul>
+</li>
+<li><p>布局文件设置</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android :themen=<span class="string">"@android:style/Theme.NoTitleBar.Fullscreen"</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>未解决的问题</p>
-<ol>
-<li>笔记代码应该整体对齐的方式</li>
-<li>笔记模板的创建</li>
-</ol>
-<p>​</p>
-</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/03/2016:7:10学习笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -713,7 +514,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/03/学习计划/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/03/如何用一行代码初始化一个ArrayList/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dangxy">
@@ -735,7 +536,131 @@
             
               
                 
-                <a class="post-title-link" href="/2017/05/03/学习计划/" itemprop="url">
+                <a class="post-title-link" href="/2017/05/03/如何用一行代码初始化一个ArrayList/" itemprop="url">
+                  如何用一行代码初始化一个ArrayList
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-03T20:06:15+08:00">
+                2017-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="如何用一行代码初始化一个ArrayList"><a href="#如何用一行代码初始化一个ArrayList" class="headerlink" title="如何用一行代码初始化一个ArrayList"></a>如何用一行代码初始化一个ArrayList</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>为了测试，我需要临时快速创建一个list。一开始我这样做：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; places = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">places.add(<span class="string">"Buenos Aires"</span>);</div><div class="line">places.add(<span class="string">"Córdoba"</span>);</div><div class="line">places.add(<span class="string">"La Plata"</span>);</div></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/03/如何用一行代码初始化一个ArrayList/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/03/如何获取Android设备唯一ID/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dangxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="党学义的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/03/如何获取Android设备唯一ID/" itemprop="url">
                   如何获取Android设备唯一ID？
                 </a>
               
@@ -788,189 +713,20 @@
 
       
         
-          
-            <h2 id="三个月学习计划（2016-7-10-2017-9）"><a href="#三个月学习计划（2016-7-10-2017-9）" class="headerlink" title="三个月学习计划（2016/7/10~2017/9）"></a>三个月学习计划（2016/7/10~2017/9）</h2><ul>
-<li>每天学习两篇博客文章<ul>
-<li>[ ] 博客一</li>
-<li>[ ] 博客二</li>
-</ul>
-</li>
-</ul>
+          <h2 id="如何获取Android设备唯一ID？"><a href="#如何获取Android设备唯一ID？" class="headerlink" title="如何获取Android设备唯一ID？"></a>如何获取Android设备唯一ID？</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>每一个android设备都有唯一ID吗？如果有？怎么用java最简单取得呢？</p>
+<p>如何取得android唯一码？</p>
+<p>好处：</p>
 <ul>
-<li>看Android相关的书籍（一个小时）<ul>
-<li>[ ] 看的什么书</li>
-</ul>
-</li>
-<li>写代码</li>
-<li>博客总结</li>
-<li>Android体系划分（基础夯实）</li>
-<li>Android进阶划分（框架开源）</li>
-<li>其他<ul>
-<li>简书</li>
-<li>知乎</li>
-<li>微信订阅号</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/02/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dangxy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="党学义的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/02/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java/" itemprop="url">
-                  (Override）equlas和hashCode方法时应考虑的问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-02T10:00:54+08:00">
-                2017-03-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>##重写（Override）equlas和hashCode方法时应考虑的问题</p>
-<p>###理论上讲（编程语言、数学层面）<br>equals() 定义了对象的相等关系（自反性、对称性、传递性）（有点抽象，更详细说明，请参考<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#equals(java.lang.Object" target="_blank" rel="external">javadoc</a>)) 。<br>另外，它还具有一致性（也就是说，如果一个对象没有修改，那么对象的equals方法，应总是返回相同的值），此外，o.equals(null)应当总是返回false。<br>hashCode()（<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#hashCode(" target="_blank" rel="external">javadoc</a>))也必须具备一致性的（也就是说，如果equal的结果没有变，那么hashcode()也应总是返回相同的值）</p>
-<p>总的来说，这两个方法的关系：</p>
-<p><strong>假如a.equals(b)，那么a.hashCode() 应等于b.hashCode()</strong></p>
-<p>###实践上讲<br>  <!-- 阅读全文 -->    ​<br><strong>如果你重写了其中一个方法，那么务必重写另外一个方法</strong></p>
-<p>equals()和hashCode()所计算的属性集（set of fields）应当是一样的<br>如何更快地重写这两个方法呢？</p>
-<ol>
-<li><p>使用<a href="http://commons.apache.org/lang/" target="_blank" rel="external">Apache Commons Lang library</a>中的<a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/EqualsBuilder.html" target="_blank" rel="external">EqualsBuilder</a>、<a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/HashCodeBuilder.html" target="_blank" rel="external">HashCodeBuilder</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</div><div class="line">    <span class="comment">// ...</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> HashCodeBuilder(<span class="number">17</span>, <span class="number">31</span>). <span class="comment">// two randomly chosen prime numbers</span></div><div class="line">            <span class="comment">// if deriving: appendSuper(super.hashCode()).</span></div><div class="line">            append(name).</div><div class="line">            append(age).</div><div class="line">            toHashCode();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (!(obj <span class="keyword">instanceof</span> Person))</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">if</span> (obj == <span class="keyword">this</span>)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line"></div><div class="line">        Person rhs = (Person) obj;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> EqualsBuilder().</div><div class="line">            <span class="comment">// if deriving: appendSuper(super.equals(obj)).</span></div><div class="line">            append(name, rhs.name).</div><div class="line">            append(age, rhs.age).</div><div class="line">            isEquals();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>如果你是用eclipse，可以在代码编辑区右键，然后选择 Source &gt; Generate hashCode() and equals()</p>
-</li>
-</ol>
-<p><strong>另外请记得</strong></p>
-<p>当你使用一些基于Hash的 Collection 、 Map，例如HashSet, LinkedHashSet, HashMap, Hashtable, 、WeakHashMap等。在键值对被放到集合中之后，请确保其key值所对应的hashCode()是保持不变的。比较可靠的一个办法，是保持这些key是不可变的，这也能带来不少好处</p>
-<p>stackoverflow链接：<br><a href="http://stackoverflow.com/questions/27581/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java" target="_blank" rel="external">http://stackoverflow.com/questions/27581/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java</a></p>
-
-          
+<li>1.不需要特定权限.</li>
+<li>2.在99.5% Android装置（包括root过的）上，即API =&gt; 9，保证唯一性.</li>
+<li><p>3.重装app之后仍能取得相同唯一值. </p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/03/如何获取Android设备唯一ID/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1087,14 +843,14 @@
 
       
         
-          
-            <h2 id="工作中遇到的问题-1"><a href="#工作中遇到的问题-1" class="headerlink" title="工作中遇到的问题(1)"></a>工作中遇到的问题(1)</h2><h4 id="1-无法启动application-在android-4-4-版本-上出现这个问题"><a href="#1-无法启动application-在android-4-4-版本-上出现这个问题" class="headerlink" title="1. 无法启动application 在android  4.4 版本 上出现这个问题"></a>1. 无法启动application 在android  4.4 版本 上出现这个问题</h4> <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> Process: com.jingge.microlesson, PID: 17879</div><div class="line">ava.lang.RuntimeException: Unable to instantiate application com.jingge.microlesson.MicroLessonApplication: java.lang.ClassNotFoundException: Didn't find class "com.jingge.microlesson.MicroLessonApplication" on path: DexPathList[[zip file "/data/app/com.jingge.microlesson-2.apk"],nativeLibraryDirectories=[/data/app-lib/com.jingge.microlesson-2, /vendor/lib, /system/lib, /data/datalib]]</div><div class="line"> at android.app.LoadedApk.makeApplication(LoadedApk.java:537)</div><div class="line">    at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4586)</div><div class="line">  at android.app.ActivityThread.access$1800(ActivityThread.java:139)</div><div class="line">  at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1316)</div><div class="line">   at android.os.Handler.dispatchMessage(Handler.java:102)</div><div class="line">at android.os.Looper.loop(Looper.java:136)</div><div class="line">at android.app.ActivityThread.main(ActivityThread.java:5314)</div><div class="line">at java.lang.reflect.Method.invokeNative(Native Method)</div><div class="line">at java.lang.reflect.Method.invoke(Method.java:515)</div><div class="line">at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:864)</div><div class="line">at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:680)</div><div class="line"> at dalvik.system.NativeStart.main(Native Method)</div><div class="line">Caused by: java.lang.ClassNotFoundException: Didn't find class "com.jingge.microlesson.MicroLessonApplication" on path: DexPathList[[zip file "/data/app/com.jingge.microlesson-2.apk"],nativeLibraryDirectories=[/data/app-lib/com.jingge.microlesson-2, /vendor/lib, /system/lib, /data/datalib]]</div><div class="line">at dalvik.system.BaseDexClassLoader.findClass(BaseDexClassLoader.java:56)</div><div class="line">at java.lang.ClassLoader.loadClass(ClassLoader.java:497)</div><div class="line"> at java.lang.ClassLoader.loadClass(ClassLoader.java:457)</div><div class="line">at android.app.Instrumentation.newApplication(Instrumentation.java:976)</div><div class="line">at android.app.LoadedApk.makeApplication(LoadedApk.java:532)</div><div class="line">at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4586) </div><div class="line"> at android.app.ActivityThread.access$1800(ActivityThread.java:139) </div><div class="line"> at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1316) </div><div class="line"> at android.os.Handler.dispatchMessage(Handler.java:102) </div><div class="line"> at android.os.Looper.loop(Looper.java:136) </div><div class="line"> at android.app.ActivityThread.main(ActivityThread.java:5314) </div><div class="line">at java.lang.reflect.Method.invokeNative(Native Method) </div><div class="line">at java.lang.reflect.Method.invoke(Method.java:515) </div><div class="line">at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:864) </div><div class="line"> at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:680) </div><div class="line">at dalvik.system.NativeStart.main(Native Method) </div><div class="line"></div><div class="line">See http://g.co/androidstudio/manifest-merger for more information about the manifest merger.</div><div class="line">&lt;!-- 阅读全文 --&gt;</div><div class="line">    Suggestion: add 'tools:replace="android:allowBackup"' to &lt;application&gt; element at AndroidManifest.xml:55:5-594:19 to override</div></pre></td></tr></table></figure>
-<blockquote>
-<p>无法启动application 在android  4.4 版本 上出现这个问题   compile SDK 的版本改为13以上 就可以 了</p>
-</blockquote>
-<h3 id="2-Vitamio-支持64手机播放"><a href="#2-Vitamio-支持64手机播放" class="headerlink" title="2. Vitamio 支持64手机播放"></a>2. Vitamio 支持64手机播放</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">https://github.com/yixia/VitamioBundle/issues/305</div><div class="line"></div><div class="line">Hi, I searched on the net these days and finally found the solution!</div><div class="line">If you are using Android studio, just edit the gradle.properties in the root folder and addandroid.useDeprecatedNdk=true. Then edit the build.gradle file in your app's folder, set abiFilters as below:</div><div class="line">android &#123;</div><div class="line">    ....</div><div class="line">    defaultConfig &#123;</div><div class="line">        ....</div><div class="line">        ndk &#123;</div><div class="line">            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">网络出现的问题：</div><div class="line"></div><div class="line">sorry,this video cannot be played</div><div class="line">√√√√</div><div class="line"></div><div class="line">sorry,this video cannot be played</div><div class="line"></div><div class="line">android 5.0 权限拒绝 permission deny  解决办法：</div><div class="line">&lt;uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" /&gt;</div></pre></td></tr></table></figure>
-
-          
+          <h2 id="工作中遇到的问题-1"><a href="#工作中遇到的问题-1" class="headerlink" title="工作中遇到的问题(1)"></a>工作中遇到的问题(1)</h2><h4 id="1-无法启动application-在android-4-4-版本-上出现这个问题"><a href="#1-无法启动application-在android-4-4-版本-上出现这个问题" class="headerlink" title="1. 无法启动application 在android  4.4 版本 上出现这个问题"></a>1. 无法启动application 在android  4.4 版本 上出现这个问题</h4>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/02/工作中遇到的问题(1)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1136,7 +892,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/27/is-there-a-unique-android-device-id/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/02/(Override）equlas和hashCode方法时应考虑的问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dangxy">
@@ -1158,8 +914,136 @@
             
               
                 
-                <a class="post-title-link" href="/2016/03/27/is-there-a-unique-android-device-id/" itemprop="url">
-                  未命名
+                <a class="post-title-link" href="/2017/03/02/(Override）equlas和hashCode方法时应考虑的问题/" itemprop="url">
+                  (Override）equlas和hashCode方法时应考虑的问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-02T10:00:54+08:00">
+                2017-03-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>##重写（Override）equlas和hashCode方法时应考虑的问题</p>
+<p>###理论上讲（编程语言、数学层面）<br>equals() 定义了对象的相等关系（自反性、对称性、传递性）（有点抽象，更详细说明，请参考<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#equals(java.lang.Object" target="_blank" rel="external">javadoc</a>)) 。<br>另外，它还具有一致性（也就是说，如果一个对象没有修改，那么对象的equals方法，应总是返回相同的值），此外，o.equals(null)应当总是返回false。<br>hashCode()（<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#hashCode(" target="_blank" rel="external">javadoc</a>))也必须具备一致性的（也就是说，如果equal的结果没有变，那么hashcode()也应总是返回相同的值）</p>
+<p>总的来说，这两个方法的关系：</p>
+<p><strong>假如a.equals(b)，那么a.hashCode() 应等于b.hashCode()</strong></p>
+<p>###实践上讲<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/02/(Override）equlas和hashCode方法时应考虑的问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/27/在java中声明数组/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dangxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="党学义的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/27/在java中声明数组/" itemprop="url">
+                  在java中声明数组
                 </a>
               
             
@@ -1212,38 +1096,416 @@
       
         
           
-            <p>##如何获取Android设备唯一ID？</p>
-<p>###问题<br>每一个android设备都有唯一ID吗？如果有？怎么用java最简单取得呢？</p>
-<p>###回答1（最佳）</p>
-<p>如何取得android唯一码？</p>
-<p>好处：</p>
-<ul>
-<li>1.不需要特定权限.</li>
-<li>2.在99.5% Android装置（包括root过的）上，即API =&gt; 9，保证唯一性.</li>
-<li>3.重装app之后仍能取得相同唯一值.</li>
-</ul>
-<p>伪代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">if API =&gt; 9/10: (99.5% of devices)</div><div class="line"></div><div class="line">return unique ID containing serial id (rooted devices may be different)</div><div class="line"></div><div class="line">else</div><div class="line"></div><div class="line">return unique ID of build information (may overlap data - API &lt; 9)</div></pre></td></tr></table></figure>
-<p>代码:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Return pseudo unique ID</div><div class="line"> * <span class="doctag">@return</span> ID</div><div class="line"> */<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getUniquePsuedoID</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// If all else fails, if the user does have lower than API 9 (lower</span></div><div class="line">    <span class="comment">// than Gingerbread), has reset their device or 'Secure.ANDROID_ID'</span></div><div class="line">    <span class="comment">// returns 'null', then simply the ID returned will be solely based</span></div><div class="line">    <span class="comment">// off their Android device information. This is where the collisions</span></div><div class="line">    <span class="comment">// can happen.</span></div><div class="line">    <span class="comment">// Thanks http://www.pocketmagic.net/?p=1662!</span></div><div class="line">    <span class="comment">// Try not to use DISPLAY, HOST or ID - these items could change.</span></div><div class="line">    <span class="comment">// If there are collisions, there will be overlapping data</span></div><div class="line">    String m_szDevIDShort = <span class="string">"35"</span> + (Build.BOARD.length() % <span class="number">10</span>) + (Build.BRAND.length() % <span class="number">10</span>) + (Build.CPU_ABI.length() % <span class="number">10</span>) + (Build.DEVICE.length() % <span class="number">10</span>) + (Build.MANUFACTURER.length() % <span class="number">10</span>) + (Build.MODEL.length() % <span class="number">10</span>) + (Build.PRODUCT.length() % <span class="number">10</span>);</div><div class="line"></div><div class="line">    <span class="comment">// Thanks to @Roman SL!</span></div><div class="line">    <span class="comment">// http://stackoverflow.com/a/4789483/950427</span></div><div class="line">    <span class="comment">// Only devices with API &gt;= 9 have android.os.Build.SERIAL</span></div><div class="line">    <span class="comment">// http://developer.android.com/reference/android/os/Build.html#SERIAL</span></div><div class="line">    <span class="comment">// If a user upgrades software or roots their device, there will be a duplicate entry</span></div><div class="line">    String serial = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        serial = android.os.Build.class.getField(<span class="string">"SERIAL"</span>).get(<span class="keyword">null</span>).toString();</div><div class="line"></div><div class="line">        <span class="comment">// Go ahead and return the serial for api =&gt; 9</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();</div><div class="line">    &#125; <span class="keyword">catch</span> (Exception exception) &#123;</div><div class="line">        <span class="comment">// String needs to be initialized</span></div><div class="line">        serial = <span class="string">"serial"</span>; <span class="comment">// some value</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Thanks @Joe!</span></div><div class="line">    <span class="comment">// http://stackoverflow.com/a/2853253/950427</span></div><div class="line">    <span class="comment">// Finally, combine the values we have found by using the UUID class to create a unique identifier</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();&#125;</div></pre></td></tr></table></figure>
-<p>###回答2<br>好处：</p>
-<ul>
-<li>1.不需要特定权限.</li>
-<li>2.在100% Android装置（包括root过的）上，保证唯一性.</li>
-</ul>
-<p>坏处</p>
-<ul>
-<li>1.重装app之后不能取得相同唯一值.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> String uniqueID = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String PREF_UNIQUE_ID = <span class="string">"PREF_UNIQUE_ID"</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> String <span class="title">id</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (uniqueID == <span class="keyword">null</span>) &#123;</div><div class="line">        SharedPreferences sharedPrefs = context.getSharedPreferences(</div><div class="line">                PREF_UNIQUE_ID, Context.MODE_PRIVATE);</div><div class="line">        uniqueID = sharedPrefs.getString(PREF_UNIQUE_ID, <span class="keyword">null</span>);</div><div class="line">        <span class="keyword">if</span> (uniqueID == <span class="keyword">null</span>) &#123;</div><div class="line">            uniqueID = UUID.randomUUID().toString();</div><div class="line">            Editor editor = sharedPrefs.edit();</div><div class="line">            editor.putString(PREF_UNIQUE_ID, uniqueID);</div><div class="line">            editor.commit();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> uniqueID;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>###回答3（需要有电话卡）</p>
-<p>好处：<br>1.重装app之后仍能取得相同唯一值.</p>
-<p>代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> TelephonyManager tm = (TelephonyManager) getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);</div><div class="line"><span class="keyword">final</span> String tmDevice, tmSerial, androidId;</div><div class="line">tmDevice = <span class="string">""</span> + tm.getDeviceId();</div><div class="line">tmSerial = <span class="string">""</span> + tm.getSimSerialNumber();</div><div class="line">androidId = <span class="string">""</span> + android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);</div><div class="line">UUID deviceUuid = <span class="keyword">new</span> UUID(androidId.hashCode(), ((<span class="keyword">long</span>)tmDevice.hashCode() &lt;&lt; <span class="number">32</span>) | tmSerial.hashCode());</div><div class="line">String deviceId = deviceUuid.toString();</div></pre></td></tr></table></figure>
-<p>谨记：要取得以下权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=&quot;android.permission.READ_PHONE_STATE&quot; /&gt;</div></pre></td></tr></table></figure></p>
-<p>stackoverflow链接：<br><a href="http://stackoverflow.com/questions/2785485/is-there-a-unique-android-device-id" target="_blank" rel="external">http://stackoverflow.com/questions/2785485/is-there-a-unique-android-device-id</a></p>
+            <h2 id="在java中声明数组"><a href="#在java中声明数组" class="headerlink" title="在java中声明数组"></a>在java中声明数组</h2><h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><p>你是如何在Java中声明数组的。</p>
+<h3 id="回答："><a href="#回答：" class="headerlink" title="回答："></a>回答：</h3><p>你可以直接用数组声明，或者通过数组的字面常量（array literal ）声明</p>
+<p>对于原始类型（primitive types）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">int[] myIntArray = new int[3];</div><div class="line">int[] myIntArray = &#123;1, 2, 3&#125;;</div><div class="line">int[] myIntArray = new int[]&#123;1, 2, 3&#125;;</div></pre></td></tr></table></figure></p>
+<p>对于其他类，比如String类，也是相同的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String[] myStringArray = new String[3];</div><div class="line">String[] myStringArray = &#123;&quot;a&quot;, &quot;b&quot;,&quot;c&quot;&#125;;</div><div class="line">String[] myStringArray = new String[]&#123;&quot;a&quot;, &quot;b&quot;, &quot;c&quot;&#125;;</div></pre></td></tr></table></figure></p>
+<p><a href="http://stackoverflow.com/questions/1200621/declare-array-in-java" target="_blank" rel="external">stackoverflow链接：Declare array in Java?</a></p>
 
           
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/27/如何产生一个随机的字母数字串作为 session 的唯一标识符/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dangxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="党学义的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/27/如何产生一个随机的字母数字串作为 session 的唯一标识符/" itemprop="url">
+                  如何产生一个随机的字母数字串作为 session 的唯一标识符
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-27T10:24:34+08:00">
+                2016-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="如何产生一个随机的字母数字串作为-session-的唯一标识符"><a href="#如何产生一个随机的字母数字串作为-session-的唯一标识符" class="headerlink" title="如何产生一个随机的字母数字串作为 session 的唯一标识符?"></a>如何产生一个随机的字母数字串作为 session 的唯一标识符?</h1><p>如果允许产生的随机字符串是可猜测的(随机字符串比较都短,或者使用有缺陷的随机数生成器),进而导致攻击者可能会劫持到会话的,可以使用一个相对简单随机数生成代码,如下所示:<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/03/27/如何产生一个随机的字母数字串作为 session 的唯一标识符/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/27/线程中wait()和sleep()的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dangxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="党学义的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/27/线程中wait()和sleep()的区别/" itemprop="url">
+                  线程wait()和sleep()的区别
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-27T10:24:34+08:00">
+                2016-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="wait-和sleep-的区别"><a href="#wait-和sleep-的区别" class="headerlink" title="wait()和sleep()的区别"></a>wait()和sleep()的区别</h2><h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><p>在线程里 <code>wait()</code> 和 <code>sleep()</code> 的区别？</p>
+<p>我的理解是执行 <code>wait()</code> 语句后，该线程仍是运行态，并且会占用CPU，但是执行 <code>sleep()</code>后，该线程则不会占用CPU，对吗？</p>
+<p>为什么需要 <code>sleep()</code> 和 <code>wait()</code> 两条语句：他们底层是如何实现的？</p>
+<h3 id="回答："><a href="#回答：" class="headerlink" title="回答："></a>回答：</h3><p>线程 在<a href="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html#wait%28%29" target="_blank" rel="external"><code>wait</code></a> 后，可以被另一个拥有相同 <code>synchronized</code> 对象的线程，通过调用<a href="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html#notify%28%29" target="_blank" rel="external"> <code>notify</code> </a>唤醒，而 <code>sleep</code> 不行。<code>wait</code> 和 <code>notify</code> 能正常执行的条件是（否则会抛异常）：多个线程的代码，都包在<code>synchronized</code>块中，并且 <code>synchronized</code> 锁的对象需要是同一个。如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Object mon = ...;</div><div class="line">synchronized (mon) &#123;</div><div class="line">    mon.wait();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面这个线程调用了 <code>wait</code>后，会进入等待状态。这时另外一个线程可以这样做：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">synchronized (mon) &#123; mon.notify(); &#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到，<code>synchronized</code>锁对象，都是mon。因此，当第二个线程调用了 <code>notify()</code> 方法，第一个线程就会唤醒（假设有且仅有一个线程是被包在 <code>synchronized (mon)</code> 中且处于等待状态)。</p>
+<p>如果有多个线程在等待（且<code>synchronized</code> 锁对象是同一个，如上例中的mon），则可以调用<a href="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html#notifyAll%28%29" target="_blank" rel="external"> <code>notifyAll</code> </a>来唤醒。但是，只有其中一个线程能抢到锁并继续执行（因为  <code>wait</code> 的线程都是在 <code>synchronized</code> 块内，需要争夺 <code>synchronized</code> 锁）。其他的线程会被锁住，直到他们依次获得锁。</p>
+<p>再补充几点：</p>
+<ul>
+<li><p><code>wait</code> 方法由 <code>Object</code> 对象调用（例如：你可以让 <code>synchronized</code> 锁对象调用 <code>wait</code> ,如上面例子的mon.wait()）,而 <code>sleep</code> 则由线程调用。</p>
+</li>
+<li><p><code>wait</code> 之后，可能会伪唤醒（<code>spurious wakeups</code>）（正在waiting的线程,无故就被唤醒了，如遇到interrupted, timing out等情况）。因此，你需要多设置一些检查，如果不满足实际的运行条件，则继续等待，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">synchronized &#123;</div><div class="line">    while (!condition) &#123; mon.wait(); &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>当线程调用 <code>sleep</code> 时，并没有释放对象锁，而 <code>wait</code> 则释放了对象锁：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">synchronized(LOCK) &#123;</div><div class="line">    Thread.sleep(1000); // LOCK is held</div><div class="line">&#125;</div><div class="line">synchronized(LOCK) &#123;</div><div class="line">    LOCK.wait(); // LOCK is not held</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>最后，再小结一下：</p>
+<ul>
+<li><code>sleep()</code>:“我已经完成了一个时间片，<strong>在n微秒</strong>前，请不要再给我一个时间片”。这时操作系统不会让这个线程做任何事情，直到sleep时间结束。</li>
+<li><code>wait()</code>:”我已经完成了一个时间片，<strong>在其他线程调用<code>notify()</code>前</strong>，请不要再给我一个时间片）。这时操作系统不会安排这个线程继续运行，直到有人调用了<code>notify()</code></li>
+</ul>
+<p><strong>stackoverflow链接：</strong><br><a href="http://stackoverflow.com/questions/1036754/difference-between-wait-and-sleep" target="_blank" rel="external">http://stackoverflow.com/questions/1036754/difference-between-wait-and-sleep</a></p>
+<h3 id="相关问题及链接："><a href="#相关问题及链接：" class="headerlink" title="相关问题及链接："></a>相关问题及链接：</h3><ol>
+<li><a href="http://stackoverflow.com/questions/37026/java-notify-vs-notifyall-all-over-again" target="_blank" rel="external">Java: notify() vs. notifyAll() all over again</a></li>
+<li><a href="http://ifeve.com/thread-signaling/" target="_blank" rel="external">线程通信</a></li>
+<li><a href="http://longdick.iteye.com/blog/453615" target="_blank" rel="external">最简实例说明wait、notify、notifyAll的使用方法</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/03/StringBuilder和StringBuffer有哪些区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dangxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="党学义的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/03/StringBuilder和StringBuffer有哪些区别/" itemprop="url">
+                  StringBuilder和StringBuffer有哪些区别呢
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-03T10:06:15+08:00">
+                2016-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="StringBuilder和StringBuffer有哪些区别呢"><a href="#StringBuilder和StringBuffer有哪些区别呢" class="headerlink" title="StringBuilder和StringBuffer有哪些区别呢"></a>StringBuilder和StringBuffer有哪些区别呢</h2><h3 id="最主要的区别，StringBuffer的实现用了synchronized（锁），而StringBuilder没有。"><a href="#最主要的区别，StringBuffer的实现用了synchronized（锁），而StringBuilder没有。" class="headerlink" title="最主要的区别，StringBuffer的实现用了synchronized（锁），而StringBuilder没有。"></a>最主要的区别，StringBuffer的实现用了synchronized（锁），而StringBuilder没有。</h3><p>因此，StringBuilder会比StringBuffer快。</p>
+<p>如果你</p>
+<ul>
+<li>非常非常追求性能（其实这两个都不慢，比直接操作String，要快非常多了）</li>
+<li>不需要考虑线程安全问题,</li>
+<li>JRE是1.5+</li>
+</ul>
+<p>可以用StringBuilder,反之，请用StringBuffer。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/02/03/StringBuilder和StringBuffer有哪些区别/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1321,7 +1583,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

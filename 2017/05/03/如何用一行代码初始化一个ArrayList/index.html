@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="工作中遇到的问题(1)1. 无法启动application 在android  4.4 版本 上出现这个问题">
+<meta name="description" content="如何用一行代码初始化一个ArrayList问题为了测试，我需要临时快速创建一个list。一开始我这样做：1234ArrayList&amp;lt;String&amp;gt; places = new ArrayList&amp;lt;String&amp;gt;();places.add(&quot;Buenos Aires&quot;);places.add(&quot;Córdoba&quot;);places.add(&quot;La Plata&quot;);">
 <meta property="og:type" content="article">
-<meta property="og:title" content="工作中遇到的问题(持续更新中)">
-<meta property="og:url" content="http://yoursite.com/2017/03/02/工作中遇到的问题(1)/index.html">
+<meta property="og:title" content="如何用一行代码初始化一个ArrayList">
+<meta property="og:url" content="http://yoursite.com/2017/05/03/如何用一行代码初始化一个ArrayList/index.html">
 <meta property="og:site_name" content="党学义的博客">
-<meta property="og:description" content="工作中遇到的问题(1)1. 无法启动application 在android  4.4 版本 上出现这个问题">
-<meta property="og:updated_time" content="2017-05-04T06:15:15.000Z">
+<meta property="og:description" content="如何用一行代码初始化一个ArrayList问题为了测试，我需要临时快速创建一个list。一开始我这样做：1234ArrayList&amp;lt;String&amp;gt; places = new ArrayList&amp;lt;String&amp;gt;();places.add(&quot;Buenos Aires&quot;);places.add(&quot;Córdoba&quot;);places.add(&quot;La Plata&quot;);">
+<meta property="og:updated_time" content="2017-05-04T06:03:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="工作中遇到的问题(持续更新中)">
-<meta name="twitter:description" content="工作中遇到的问题(1)1. 无法启动application 在android  4.4 版本 上出现这个问题">
+<meta name="twitter:title" content="如何用一行代码初始化一个ArrayList">
+<meta name="twitter:description" content="如何用一行代码初始化一个ArrayList问题为了测试，我需要临时快速创建一个list。一开始我这样做：1234ArrayList&amp;lt;String&amp;gt; places = new ArrayList&amp;lt;String&amp;gt;();places.add(&quot;Buenos Aires&quot;);places.add(&quot;Córdoba&quot;);places.add(&quot;La Plata&quot;);">
 
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/02/工作中遇到的问题(1)/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/03/如何用一行代码初始化一个ArrayList/"/>
 
 
 
@@ -252,7 +252,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/02/工作中遇到的问题(1)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/03/如何用一行代码初始化一个ArrayList/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dangxy">
@@ -273,7 +273,7 @@
             
             
               
-                工作中遇到的问题(持续更新中)
+                如何用一行代码初始化一个ArrayList
               
             
           </h1>
@@ -288,8 +288,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-02T10:00:54+08:00">
-                2017-03-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-03T20:06:15+08:00">
+                2017-05-03
               </time>
             
 
@@ -323,12 +323,17 @@
       
 
       
-        <h2 id="工作中遇到的问题-1"><a href="#工作中遇到的问题-1" class="headerlink" title="工作中遇到的问题(1)"></a>工作中遇到的问题(1)</h2><h4 id="1-无法启动application-在android-4-4-版本-上出现这个问题"><a href="#1-无法启动application-在android-4-4-版本-上出现这个问题" class="headerlink" title="1. 无法启动application 在android  4.4 版本 上出现这个问题"></a>1. 无法启动application 在android  4.4 版本 上出现这个问题</h4> <a id="more"></a>
- <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> Process: com.jingge.microlesson, PID: 17879</div><div class="line">ava.lang.RuntimeException: Unable to instantiate application com.jingge.microlesson.MicroLessonApplication: java.lang.ClassNotFoundException: Didn't find class "com.jingge.microlesson.MicroLessonApplication" on path: DexPathList[[zip file "/data/app/com.jingge.microlesson-2.apk"],nativeLibraryDirectories=[/data/app-lib/com.jingge.microlesson-2, /vendor/lib, /system/lib, /data/datalib]]</div><div class="line"> at android.app.LoadedApk.makeApplication(LoadedApk.java:537)</div><div class="line">    at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4586)</div><div class="line">  at android.app.ActivityThread.access$1800(ActivityThread.java:139)</div><div class="line">  at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1316)</div><div class="line">   at android.os.Handler.dispatchMessage(Handler.java:102)</div><div class="line">at android.os.Looper.loop(Looper.java:136)</div><div class="line">at android.app.ActivityThread.main(ActivityThread.java:5314)</div><div class="line">at java.lang.reflect.Method.invokeNative(Native Method)</div><div class="line">at java.lang.reflect.Method.invoke(Method.java:515)</div><div class="line">at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:864)</div><div class="line">at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:680)</div><div class="line"> at dalvik.system.NativeStart.main(Native Method)</div><div class="line">Caused by: java.lang.ClassNotFoundException: Didn't find class "com.jingge.microlesson.MicroLessonApplication" on path: DexPathList[[zip file "/data/app/com.jingge.microlesson-2.apk"],nativeLibraryDirectories=[/data/app-lib/com.jingge.microlesson-2, /vendor/lib, /system/lib, /data/datalib]]</div><div class="line">at dalvik.system.BaseDexClassLoader.findClass(BaseDexClassLoader.java:56)</div><div class="line">at java.lang.ClassLoader.loadClass(ClassLoader.java:497)</div><div class="line"> at java.lang.ClassLoader.loadClass(ClassLoader.java:457)</div><div class="line">at android.app.Instrumentation.newApplication(Instrumentation.java:976)</div><div class="line">at android.app.LoadedApk.makeApplication(LoadedApk.java:532)</div><div class="line">at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4586) </div><div class="line"> at android.app.ActivityThread.access$1800(ActivityThread.java:139) </div><div class="line"> at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1316) </div><div class="line"> at android.os.Handler.dispatchMessage(Handler.java:102) </div><div class="line"> at android.os.Looper.loop(Looper.java:136) </div><div class="line"> at android.app.ActivityThread.main(ActivityThread.java:5314) </div><div class="line">at java.lang.reflect.Method.invokeNative(Native Method) </div><div class="line">at java.lang.reflect.Method.invoke(Method.java:515) </div><div class="line">at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:864) </div><div class="line"> at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:680) </div><div class="line">at dalvik.system.NativeStart.main(Native Method) </div><div class="line"></div><div class="line">See http://g.co/androidstudio/manifest-merger for more information about the manifest merger.</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    Suggestion: add 'tools:replace="android:allowBackup"' to &lt;application&gt; element at AndroidManifest.xml:55:5-594:19 to override</div></pre></td></tr></table></figure>
-<blockquote>
-<p>无法启动application 在android  4.4 版本 上出现这个问题   compile SDK 的版本改为13以上 就可以 了</p>
-</blockquote>
-<h3 id="2-Vitamio-支持64手机播放"><a href="#2-Vitamio-支持64手机播放" class="headerlink" title="2. Vitamio 支持64手机播放"></a>2. Vitamio 支持64手机播放</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">https://github.com/yixia/VitamioBundle/issues/305</div><div class="line"></div><div class="line">Hi, I searched on the net these days and finally found the solution!</div><div class="line">If you are using Android studio, just edit the gradle.properties in the root folder and addandroid.useDeprecatedNdk=true. Then edit the build.gradle file in your app's folder, set abiFilters as below:</div><div class="line">android &#123;</div><div class="line">    ....</div><div class="line">    defaultConfig &#123;</div><div class="line">        ....</div><div class="line">        ndk &#123;</div><div class="line">            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">网络出现的问题：</div><div class="line"></div><div class="line">sorry,this video cannot be played</div><div class="line">√√√√</div><div class="line"></div><div class="line">sorry,this video cannot be played</div><div class="line"></div><div class="line">android 5.0 权限拒绝 permission deny  解决办法：</div><div class="line">&lt;uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" /&gt;</div></pre></td></tr></table></figure>
+        <h2 id="如何用一行代码初始化一个ArrayList"><a href="#如何用一行代码初始化一个ArrayList" class="headerlink" title="如何用一行代码初始化一个ArrayList"></a>如何用一行代码初始化一个ArrayList</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>为了测试，我需要临时快速创建一个list。一开始我这样做：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; places = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">places.add(<span class="string">"Buenos Aires"</span>);</div><div class="line">places.add(<span class="string">"Córdoba"</span>);</div><div class="line">places.add(<span class="string">"La Plata"</span>);</div></pre></td></tr></table></figure></p>
+  <a id="more"></a>    ​<br>之后我重构了下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; places = <span class="keyword">new</span> ArrayList&lt;String&gt;(</div><div class="line">    Arrays.asList(<span class="string">"Buenos Aires"</span>, <span class="string">"Córdoba"</span>, <span class="string">"La Plata"</span>));</div></pre></td></tr></table></figure>
+<p>是否有更加简便的方法呢？</p>
+<h3 id="回答"><a href="#回答" class="headerlink" title="回答"></a>回答</h3><h4 id="常见方式"><a href="#常见方式" class="headerlink" title="常见方式"></a>常见方式</h4><p>实际上，也许“最好”的方式，就是你写的这个方式，因为它不用再创建新的<code>List</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;();</div><div class="line">list.add(&quot;A&quot;);</div><div class="line">list.add(&quot;B&quot;);</div><div class="line">list.add(&quot;C&quot;);</div></pre></td></tr></table></figure></p>
+<p>只是这个方式看上去要多写些代码，让人郁闷</p>
+<h4 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h4><p>当然，还有其他方式，例如,写一个匿名内部类，然后在其中做初始化（也被称为 brace initialization）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;() &#123;&#123;</div><div class="line">    add(&quot;A&quot;);</div><div class="line">    add(&quot;B&quot;);</div><div class="line">    add(&quot;C&quot;);</div><div class="line">&#125;&#125;;</div></pre></td></tr></table></figure></p>
+<p>但是，我不喜欢这个方式。只是为了做个初始化，却要在<code>ArrayList</code>的同一行后面加这么一坨代码。</p>
+<h4 id="Arrays-asList"><a href="#Arrays-asList" class="headerlink" title="Arrays.asList"></a>Arrays.asList</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; places = Arrays.asList(&quot;Buenos Aires&quot;, &quot;Córdoba&quot;, &quot;La Plata&quot;);</div></pre></td></tr></table></figure>
+<p>####Collections.singletonList<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; places = Collections.singletonList(&quot;Buenos Aires&quot;);</div></pre></td></tr></table></figure></p>
+<p>注意：后面的这两种方式，得到的是一个定长的<code>List</code>(如果add操作会抛异常）。如果你需要一个不定长的<code>List</code>,可以这样做：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; places = new ArrayList&lt;&gt;(Arrays.asList(&quot;Buenos Aires&quot;, &quot;Córdoba&quot;, &quot;La Plata&quot;));</div></pre></td></tr></table></figure></p>
+<p>stackoverflow链接：<br><a href="http://stackoverflow.com/questions/1005073/initialization-of-an-arraylist-in-one-line" target="_blank" rel="external">http://stackoverflow.com/questions/1005073/initialization-of-an-arraylist-in-one-line</a></p>
 
       
     </div>
@@ -365,8 +370,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/02/(Override）equlas和hashCode方法时应考虑的问题/" rel="next" title="(Override）equlas和hashCode方法时应考虑的问题">
-                <i class="fa fa-chevron-left"></i> (Override）equlas和hashCode方法时应考虑的问题
+              <a href="/2017/05/03/如何获取Android设备唯一ID/" rel="next" title="如何获取Android设备唯一ID？">
+                <i class="fa fa-chevron-left"></i> 如何获取Android设备唯一ID？
               </a>
             
           </div>
@@ -375,8 +380,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/03/如何获取Android设备唯一ID/" rel="prev" title="如何获取Android设备唯一ID？">
-                如何获取Android设备唯一ID？ <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/03/项目技术点选择/" rel="prev" title="技术选择">
+                技术选择 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -517,7 +522,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#工作中遇到的问题-1"><span class="nav-number">1.</span> <span class="nav-text">工作中遇到的问题(1)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-无法启动application-在android-4-4-版本-上出现这个问题"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. 无法启动application 在android  4.4 版本 上出现这个问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Vitamio-支持64手机播放"><span class="nav-number">1.1.</span> <span class="nav-text">2. Vitamio 支持64手机播放</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何用一行代码初始化一个ArrayList"><span class="nav-number">1.</span> <span class="nav-text">如何用一行代码初始化一个ArrayList</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-number">1.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回答"><span class="nav-number">1.2.</span> <span class="nav-text">回答</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常见方式"><span class="nav-number">1.2.1.</span> <span class="nav-text">常见方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匿名内部类"><span class="nav-number">1.2.2.</span> <span class="nav-text">匿名内部类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Arrays-asList"><span class="nav-number">1.2.3.</span> <span class="nav-text">Arrays.asList</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
