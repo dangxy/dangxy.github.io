@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="如何用一行代码初始化一个ArrayList问题为了测试，我需要临时快速创建一个list。一开始我这样做：1234ArrayList&amp;lt;String&amp;gt; places = new ArrayList&amp;lt;String&amp;gt;();places.add(&quot;Buenos Aires&quot;);places.add(&quot;Córdoba&quot;);places.add(&quot;La Plata&quot;);">
+<meta name="description" content="如何用一行代码初始化一个ArrayList问题为了测试，我需要临时快速创建一个list。一开始我这样做：123456789ArrayList&amp;lt;String&amp;gt; places = new ArrayList&amp;lt;String&amp;gt;();places.add(&quot;Buenos Aires&quot;);places.add(&quot;Córdoba&quot;);places.add(&quot;La Plata&quot;);之后我重">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何用一行代码初始化一个ArrayList">
 <meta property="og:url" content="http://yoursite.com/2017/05/03/如何用一行代码初始化一个ArrayList/index.html">
-<meta property="og:site_name" content="党学义的博客">
-<meta property="og:description" content="如何用一行代码初始化一个ArrayList问题为了测试，我需要临时快速创建一个list。一开始我这样做：1234ArrayList&amp;lt;String&amp;gt; places = new ArrayList&amp;lt;String&amp;gt;();places.add(&quot;Buenos Aires&quot;);places.add(&quot;Córdoba&quot;);places.add(&quot;La Plata&quot;);">
-<meta property="og:updated_time" content="2017-05-04T06:03:07.000Z">
+<meta property="og:site_name" content="dangxy的博客">
+<meta property="og:description" content="如何用一行代码初始化一个ArrayList问题为了测试，我需要临时快速创建一个list。一开始我这样做：123456789ArrayList&amp;lt;String&amp;gt; places = new ArrayList&amp;lt;String&amp;gt;();places.add(&quot;Buenos Aires&quot;);places.add(&quot;Córdoba&quot;);places.add(&quot;La Plata&quot;);之后我重">
+<meta property="og:updated_time" content="2017-05-04T06:59:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何用一行代码初始化一个ArrayList">
-<meta name="twitter:description" content="如何用一行代码初始化一个ArrayList问题为了测试，我需要临时快速创建一个list。一开始我这样做：1234ArrayList&amp;lt;String&amp;gt; places = new ArrayList&amp;lt;String&amp;gt;();places.add(&quot;Buenos Aires&quot;);places.add(&quot;Córdoba&quot;);places.add(&quot;La Plata&quot;);">
+<meta name="twitter:description" content="如何用一行代码初始化一个ArrayList问题为了测试，我需要临时快速创建一个list。一开始我这样做：123456789ArrayList&amp;lt;String&amp;gt; places = new ArrayList&amp;lt;String&amp;gt;();places.add(&quot;Buenos Aires&quot;);places.add(&quot;Córdoba&quot;);places.add(&quot;La Plata&quot;);之后我重">
 
 
 
@@ -169,7 +169,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">avatar.jpg</span>
+        <span class="site-title">冰冻三尺非一日之寒</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -261,7 +261,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="党学义的博客">
+      <meta itemprop="name" content="dangxy的博客">
     </span>
 
     
@@ -323,9 +323,8 @@
       
 
       
-        <h2 id="如何用一行代码初始化一个ArrayList"><a href="#如何用一行代码初始化一个ArrayList" class="headerlink" title="如何用一行代码初始化一个ArrayList"></a>如何用一行代码初始化一个ArrayList</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>为了测试，我需要临时快速创建一个list。一开始我这样做：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; places = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">places.add(<span class="string">"Buenos Aires"</span>);</div><div class="line">places.add(<span class="string">"Córdoba"</span>);</div><div class="line">places.add(<span class="string">"La Plata"</span>);</div></pre></td></tr></table></figure></p>
-  <a id="more"></a>    ​<br>之后我重构了下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; places = <span class="keyword">new</span> ArrayList&lt;String&gt;(</div><div class="line">    Arrays.asList(<span class="string">"Buenos Aires"</span>, <span class="string">"Córdoba"</span>, <span class="string">"La Plata"</span>));</div></pre></td></tr></table></figure>
-<p>是否有更加简便的方法呢？</p>
+        <h2 id="如何用一行代码初始化一个ArrayList"><a href="#如何用一行代码初始化一个ArrayList" class="headerlink" title="如何用一行代码初始化一个ArrayList"></a>如何用一行代码初始化一个ArrayList</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>为了测试，我需要临时快速创建一个list。一开始我这样做：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; places = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">places.add(<span class="string">"Buenos Aires"</span>);</div><div class="line">places.add(<span class="string">"Córdoba"</span>);</div><div class="line">places.add(<span class="string">"La Plata"</span>);</div><div class="line"></div><div class="line">之后我重构了下</div><div class="line"></div><div class="line">ArrayList&lt;String&gt; places = <span class="keyword">new</span> ArrayList&lt;String&gt;(</div><div class="line">Arrays.asList(<span class="string">"Buenos Aires"</span>, <span class="string">"Córdoba"</span>, <span class="string">"La Plata"</span>));</div></pre></td></tr></table></figure></p>
+<p>是否有更加简便的方法呢？<br><a id="more"></a></p>
 <h3 id="回答"><a href="#回答" class="headerlink" title="回答"></a>回答</h3><h4 id="常见方式"><a href="#常见方式" class="headerlink" title="常见方式"></a>常见方式</h4><p>实际上，也许“最好”的方式，就是你写的这个方式，因为它不用再创建新的<code>List</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;();</div><div class="line">list.add(&quot;A&quot;);</div><div class="line">list.add(&quot;B&quot;);</div><div class="line">list.add(&quot;C&quot;);</div></pre></td></tr></table></figure></p>
 <p>只是这个方式看上去要多写些代码，让人郁闷</p>
 <h4 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h4><p>当然，还有其他方式，例如,写一个匿名内部类，然后在其中做初始化（也被称为 brace initialization）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;() &#123;&#123;</div><div class="line">    add(&quot;A&quot;);</div><div class="line">    add(&quot;B&quot;);</div><div class="line">    add(&quot;C&quot;);</div><div class="line">&#125;&#125;;</div></pre></td></tr></table></figure></p>
@@ -370,8 +369,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/03/如何获取Android设备唯一ID/" rel="next" title="如何获取Android设备唯一ID？">
-                <i class="fa fa-chevron-left"></i> 如何获取Android设备唯一ID？
+              <a href="/2017/05/03/项目技术点选择/" rel="next" title="技术选择">
+                <i class="fa fa-chevron-left"></i> 技术选择
               </a>
             
           </div>
@@ -379,10 +378,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/03/项目技术点选择/" rel="prev" title="技术选择">
-                技术选择 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -454,21 +449,12 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">分类</span>
-              
-            </div>
           
 
           
@@ -476,7 +462,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

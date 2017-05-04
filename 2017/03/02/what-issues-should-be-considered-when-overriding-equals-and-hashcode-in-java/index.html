@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="java,eclipse," />
 
 
 
@@ -90,16 +90,17 @@
 
 
 
-<meta name="description" content="wait()和sleep()的区别问题：在线程里 wait() 和 sleep() 的区别？ 我的理解是执行 wait() 语句后，该线程仍是运行态，并且会占用CPU，但是执行 sleep()后，该线程则不会占用CPU，对吗？ 为什么需要 sleep() 和 wait() 两条语句：他们底层是如何实现的？">
+<meta name="description" content="重写（Override）equlas和hashCode方法时应考虑的问题理论上讲（编程语言、数学层面）equals() 定义了对象的相等关系（自反性、对称性、传递性）（有点抽象，更详细说明，请参考javadoc)) 。另外，它还具有一致性（也就是说，如果一个对象没有修改，那么对象的equals方法，应总是返回相同的值），此外，o.equals(null)应当总是返回false。hashCode()">
+<meta name="keywords" content="java,eclipse">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线程wait()和sleep()的区别">
-<meta property="og:url" content="http://yoursite.com/2016/03/27/线程中wait()和sleep()的区别/index.html">
+<meta property="og:title" content="(Override）equlas和hashCode方法时应考虑的问题">
+<meta property="og:url" content="http://yoursite.com/2017/03/02/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java/index.html">
 <meta property="og:site_name" content="dangxy的博客">
-<meta property="og:description" content="wait()和sleep()的区别问题：在线程里 wait() 和 sleep() 的区别？ 我的理解是执行 wait() 语句后，该线程仍是运行态，并且会占用CPU，但是执行 sleep()后，该线程则不会占用CPU，对吗？ 为什么需要 sleep() 和 wait() 两条语句：他们底层是如何实现的？">
-<meta property="og:updated_time" content="2017-05-04T06:44:24.000Z">
+<meta property="og:description" content="重写（Override）equlas和hashCode方法时应考虑的问题理论上讲（编程语言、数学层面）equals() 定义了对象的相等关系（自反性、对称性、传递性）（有点抽象，更详细说明，请参考javadoc)) 。另外，它还具有一致性（也就是说，如果一个对象没有修改，那么对象的equals方法，应总是返回相同的值），此外，o.equals(null)应当总是返回false。hashCode()">
+<meta property="og:updated_time" content="2017-05-04T06:47:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="线程wait()和sleep()的区别">
-<meta name="twitter:description" content="wait()和sleep()的区别问题：在线程里 wait() 和 sleep() 的区别？ 我的理解是执行 wait() 语句后，该线程仍是运行态，并且会占用CPU，但是执行 sleep()后，该线程则不会占用CPU，对吗？ 为什么需要 sleep() 和 wait() 两条语句：他们底层是如何实现的？">
+<meta name="twitter:title" content="(Override）equlas和hashCode方法时应考虑的问题">
+<meta name="twitter:description" content="重写（Override）equlas和hashCode方法时应考虑的问题理论上讲（编程语言、数学层面）equals() 定义了对象的相等关系（自反性、对称性、传递性）（有点抽象，更详细说明，请参考javadoc)) 。另外，它还具有一致性（也就是说，如果一个对象没有修改，那么对象的equals方法，应总是返回相同的值），此外，o.equals(null)应当总是返回false。hashCode()">
 
 
 
@@ -127,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/03/27/线程中wait()和sleep()的区别/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/02/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java/"/>
 
 
 
@@ -252,7 +253,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/27/线程中wait()和sleep()的区别/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/02/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dangxy">
@@ -273,7 +274,7 @@
             
             
               
-                线程wait()和sleep()的区别
+                (Override）equlas和hashCode方法时应考虑的问题
               
             
           </h1>
@@ -288,8 +289,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-27T10:24:34+08:00">
-                2016-03-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-02T10:00:54+08:00">
+                2017-03-02
               </time>
             
 
@@ -323,35 +324,16 @@
       
 
       
-        <h2 id="wait-和sleep-的区别"><a href="#wait-和sleep-的区别" class="headerlink" title="wait()和sleep()的区别"></a>wait()和sleep()的区别</h2><h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><p>在线程里 <code>wait()</code> 和 <code>sleep()</code> 的区别？</p>
-<p>我的理解是执行 <code>wait()</code> 语句后，该线程仍是运行态，并且会占用CPU，但是执行 <code>sleep()</code>后，该线程则不会占用CPU，对吗？</p>
-<p>为什么需要 <code>sleep()</code> 和 <code>wait()</code> 两条语句：他们底层是如何实现的？<br><a id="more"></a></p>
-<h3 id="回答："><a href="#回答：" class="headerlink" title="回答："></a>回答：</h3><p>线程 在<a href="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html#wait%28%29" target="_blank" rel="external"><code>wait</code></a> 后，可以被另一个拥有相同 <code>synchronized</code> 对象的线程，通过调用<a href="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html#notify%28%29" target="_blank" rel="external"> <code>notify</code> </a>唤醒，而 <code>sleep</code> 不行。<code>wait</code> 和 <code>notify</code> 能正常执行的条件是（否则会抛异常）：多个线程的代码，都包在<code>synchronized</code>块中，并且 <code>synchronized</code> 锁的对象需要是同一个。如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Object mon = ...;</div><div class="line">synchronized (mon) &#123;</div><div class="line">    mon.wait();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>上面这个线程调用了 <code>wait</code>后，会进入等待状态。这时另外一个线程可以这样做：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">synchronized (mon) &#123; mon.notify(); &#125;</div></pre></td></tr></table></figure></p>
-<p>可以看到，<code>synchronized</code>锁对象，都是mon。因此，当第二个线程调用了 <code>notify()</code> 方法，第一个线程就会唤醒（假设有且仅有一个线程是被包在 <code>synchronized (mon)</code> 中且处于等待状态)。</p>
-<p>如果有多个线程在等待（且<code>synchronized</code> 锁对象是同一个，如上例中的mon），则可以调用<a href="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html#notifyAll%28%29" target="_blank" rel="external"> <code>notifyAll</code> </a>来唤醒。但是，只有其中一个线程能抢到锁并继续执行（因为  <code>wait</code> 的线程都是在 <code>synchronized</code> 块内，需要争夺 <code>synchronized</code> 锁）。其他的线程会被锁住，直到他们依次获得锁。</p>
-<p>再补充几点：</p>
-<ul>
-<li><p><code>wait</code> 方法由 <code>Object</code> 对象调用（例如：你可以让 <code>synchronized</code> 锁对象调用 <code>wait</code> ,如上面例子的mon.wait()）,而 <code>sleep</code> 则由线程调用。</p>
-</li>
-<li><p><code>wait</code> 之后，可能会伪唤醒（<code>spurious wakeups</code>）（正在waiting的线程,无故就被唤醒了，如遇到interrupted, timing out等情况）。因此，你需要多设置一些检查，如果不满足实际的运行条件，则继续等待，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">synchronized &#123;</div><div class="line">    while (!condition) &#123; mon.wait(); &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>当线程调用 <code>sleep</code> 时，并没有释放对象锁，而 <code>wait</code> 则释放了对象锁：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">synchronized(LOCK) &#123;</div><div class="line">    Thread.sleep(1000); // LOCK is held</div><div class="line">&#125;</div><div class="line">synchronized(LOCK) &#123;</div><div class="line">    LOCK.wait(); // LOCK is not held</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>最后，再小结一下：</p>
-<ul>
-<li><code>sleep()</code>:“我已经完成了一个时间片，<strong>在n微秒</strong>前，请不要再给我一个时间片”。这时操作系统不会让这个线程做任何事情，直到sleep时间结束。</li>
-<li><code>wait()</code>:”我已经完成了一个时间片，<strong>在其他线程调用<code>notify()</code>前</strong>，请不要再给我一个时间片）。这时操作系统不会安排这个线程继续运行，直到有人调用了<code>notify()</code></li>
-</ul>
-<p><strong>stackoverflow链接：</strong><br><a href="http://stackoverflow.com/questions/1036754/difference-between-wait-and-sleep" target="_blank" rel="external">http://stackoverflow.com/questions/1036754/difference-between-wait-and-sleep</a></p>
-<h3 id="相关问题及链接："><a href="#相关问题及链接：" class="headerlink" title="相关问题及链接："></a>相关问题及链接：</h3><ol>
-<li><a href="http://stackoverflow.com/questions/37026/java-notify-vs-notifyall-all-over-again" target="_blank" rel="external">Java: notify() vs. notifyAll() all over again</a></li>
-<li><a href="http://ifeve.com/thread-signaling/" target="_blank" rel="external">线程通信</a></li>
-<li><a href="http://longdick.iteye.com/blog/453615" target="_blank" rel="external">最简实例说明wait、notify、notifyAll的使用方法</a></li>
+        <h2 id="重写（Override）equlas和hashCode方法时应考虑的问题"><a href="#重写（Override）equlas和hashCode方法时应考虑的问题" class="headerlink" title="重写（Override）equlas和hashCode方法时应考虑的问题"></a>重写（Override）equlas和hashCode方法时应考虑的问题</h2><h3 id="理论上讲（编程语言、数学层面）"><a href="#理论上讲（编程语言、数学层面）" class="headerlink" title="理论上讲（编程语言、数学层面）"></a>理论上讲（编程语言、数学层面）</h3><p>equals() 定义了对象的相等关系（自反性、对称性、传递性）（有点抽象，更详细说明，请参考<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#equals(java.lang.Object" target="_blank" rel="external">javadoc</a>)) 。<br>另外，它还具有一致性（也就是说，如果一个对象没有修改，那么对象的equals方法，应总是返回相同的值），此外，o.equals(null)应当总是返回false。<br>hashCode()（<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#hashCode(" target="_blank" rel="external">javadoc</a>))也必须具备一致性的（也就是说，如果equal的结果没有变，那么hashcode()也应总是返回相同的值）</p>
+<p>总的来说，这两个方法的关系：</p>
+<p>假如a.equals(b)，那么a.hashCode() 应等于b.hashCode()**</p>
+<h3 id="实践上讲"><a href="#实践上讲" class="headerlink" title="实践上讲"></a>实践上讲</h3>  <a id="more"></a>    ​<br><strong>如果你重写了其中一个方法，那么务必重写另外一个方法</strong><br><br>equals()和hashCode()所计算的属性集（set of fields）应当是一样的<br>如何更快地重写这两个方法呢？<br>1. 使用<a href="http://commons.apache.org/lang/" target="_blank" rel="external">Apache Commons Lang library</a>中的<a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/EqualsBuilder.html" target="_blank" rel="external">EqualsBuilder</a>、<a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/HashCodeBuilder.html" target="_blank" rel="external">HashCodeBuilder</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</div><div class="line">    <span class="comment">// ...</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> HashCodeBuilder(<span class="number">17</span>, <span class="number">31</span>). <span class="comment">// two randomly chosen prime numbers</span></div><div class="line">            <span class="comment">// if deriving: appendSuper(super.hashCode()).</span></div><div class="line">            append(name).</div><div class="line">            append(age).</div><div class="line">            toHashCode();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (!(obj <span class="keyword">instanceof</span> Person))</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">if</span> (obj == <span class="keyword">this</span>)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line"></div><div class="line">        Person rhs = (Person) obj;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> EqualsBuilder().</div><div class="line">            <span class="comment">// if deriving: appendSuper(super.equals(obj)).</span></div><div class="line">            append(name, rhs.name).</div><div class="line">            append(age, rhs.age).</div><div class="line">            isEquals();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>如果你是用eclipse，可以在代码编辑区右键，然后选择 Source &gt; Generate hashCode() and equals()</li>
 </ol>
+<p><strong>另外请记得</strong></p>
+<p>当你使用一些基于Hash的 Collection 、 Map，例如HashSet, LinkedHashSet, HashMap, Hashtable, 、WeakHashMap等。在键值对被放到集合中之后，请确保其key值所对应的hashCode()是保持不变的。比较可靠的一个办法，是保持这些key是不可变的，这也能带来不少好处</p>
+<p>stackoverflow链接：<br><a href="http://stackoverflow.com/questions/27581/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java" target="_blank" rel="external">http://stackoverflow.com/questions/27581/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java</a></p>
 
       
     </div>
@@ -379,6 +361,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/eclipse/" rel="tag"># eclipse</a>
+          
+        </div>
+      
 
       
         
@@ -388,8 +378,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/03/StringBuilder和StringBuffer有哪些区别/" rel="next" title="StringBuilder和StringBuffer有哪些区别呢">
-                <i class="fa fa-chevron-left"></i> StringBuilder和StringBuffer有哪些区别呢
+              <a href="/2016/03/27/在java中声明数组/" rel="next" title="在java中声明数组">
+                <i class="fa fa-chevron-left"></i> 在java中声明数组
               </a>
             
           </div>
@@ -398,8 +388,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/27/如何产生一个随机的字母数字串作为 session 的唯一标识符/" rel="prev" title="如何产生一个随机的字母数字串作为 session 的唯一标识符">
-                如何产生一个随机的字母数字串作为 session 的唯一标识符 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/02/工作中遇到的问题(1)/" rel="prev" title="工作中遇到的问题(持续更新中)">
+                工作中遇到的问题(持续更新中) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -531,7 +521,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#wait-和sleep-的区别"><span class="nav-number">1.</span> <span class="nav-text">wait()和sleep()的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题："><span class="nav-number">1.1.</span> <span class="nav-text">问题：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回答："><span class="nav-number">1.2.</span> <span class="nav-text">回答：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题及链接："><span class="nav-number">1.3.</span> <span class="nav-text">相关问题及链接：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重写（Override）equlas和hashCode方法时应考虑的问题"><span class="nav-number">1.</span> <span class="nav-text">重写（Override）equlas和hashCode方法时应考虑的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#理论上讲（编程语言、数学层面）"><span class="nav-number">1.1.</span> <span class="nav-text">理论上讲（编程语言、数学层面）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实践上讲"><span class="nav-number">1.2.</span> <span class="nav-text">实践上讲</span></a></li></ol></li></ol></div>
             
 
           </div>
