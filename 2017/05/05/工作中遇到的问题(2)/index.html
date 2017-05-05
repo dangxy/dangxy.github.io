@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="工作中遇到的问题(2) 设置viewpagerIndicatior的宽度： 123456789101112131415161718192021222324252627282930public static void setIndicator(Context context, TabLayout tabs, int leftDip, int rightDip) &amp;#123;       Class&amp;">
+<meta name="description" content="设置viewpagerIndicatior的下划线的宽度： 123456789101112131415161718192021222324252627282930public static void setIndicator(Context context, TabLayout tabs, int leftDip, int rightDip) &amp;#123;       Class&amp;lt;?&amp;gt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="工作中遇到的问题(2)">
 <meta property="og:url" content="http://yoursite.com/2017/05/05/工作中遇到的问题(2)/index.html">
 <meta property="og:site_name" content="党学义的博客">
-<meta property="og:description" content="工作中遇到的问题(2) 设置viewpagerIndicatior的宽度： 123456789101112131415161718192021222324252627282930public static void setIndicator(Context context, TabLayout tabs, int leftDip, int rightDip) &amp;#123;       Class&amp;">
-<meta property="og:updated_time" content="2017-05-05T12:48:44.000Z">
+<meta property="og:description" content="设置viewpagerIndicatior的下划线的宽度： 123456789101112131415161718192021222324252627282930public static void setIndicator(Context context, TabLayout tabs, int leftDip, int rightDip) &amp;#123;       Class&amp;lt;?&amp;gt">
+<meta property="og:updated_time" content="2017-05-05T12:51:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="工作中遇到的问题(2)">
-<meta name="twitter:description" content="工作中遇到的问题(2) 设置viewpagerIndicatior的宽度： 123456789101112131415161718192021222324252627282930public static void setIndicator(Context context, TabLayout tabs, int leftDip, int rightDip) &amp;#123;       Class&amp;">
+<meta name="twitter:description" content="设置viewpagerIndicatior的下划线的宽度： 123456789101112131415161718192021222324252627282930public static void setIndicator(Context context, TabLayout tabs, int leftDip, int rightDip) &amp;#123;       Class&amp;lt;?&amp;gt">
 
 
 
@@ -323,7 +323,7 @@
       
 
       
-        <h3 id="工作中遇到的问题-2"><a href="#工作中遇到的问题-2" class="headerlink" title="工作中遇到的问题(2)"></a>工作中遇到的问题(2)</h3><p> 设置viewpagerIndicatior的宽度：</p>
+        <p> 设置viewpagerIndicatior的下划线的宽度：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setIndicator</span><span class="params">(Context context, TabLayout tabs, <span class="keyword">int</span> leftDip, <span class="keyword">int</span> rightDip)</span> </span>&#123;</div><div class="line">       Class&lt;?&gt; tabLayout = tabs.getClass();</div><div class="line">       Field tabStrip = <span class="keyword">null</span>;</div><div class="line">       <span class="keyword">try</span> &#123;</div><div class="line">           tabStrip = tabLayout.getDeclaredField(<span class="string">"mTabStrip"</span>);</div><div class="line">       &#125; <span class="keyword">catch</span> (NoSuchFieldException e) &#123;</div><div class="line">           e.printStackTrace();</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       tabStrip.setAccessible(<span class="keyword">true</span>);</div><div class="line">       LinearLayout ll_tab = <span class="keyword">null</span>;</div><div class="line">       <span class="keyword">try</span> &#123;</div><div class="line">           ll_tab = (LinearLayout) tabStrip.get(tabs);</div><div class="line">       &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</div><div class="line">           e.printStackTrace();</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">int</span> left = (<span class="keyword">int</span>) (getDisplayMetrics(context).density * leftDip);</div><div class="line">       <span class="keyword">int</span> right = (<span class="keyword">int</span>) (getDisplayMetrics(context).density * rightDip);</div><div class="line"></div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ll_tab.getChildCount(); i++) &#123;</div><div class="line">           View child = ll_tab.getChildAt(i);</div><div class="line">           child.setPadding(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">           LinearLayout.LayoutParams params = <span class="keyword">new</span> LinearLayout.LayoutParams(<span class="number">0</span>, LinearLayout.LayoutParams.MATCH_PARENT, <span class="number">1</span>);</div><div class="line">           params.leftMargin = left;</div><div class="line">           params.rightMargin = right;</div><div class="line">           child.setLayoutParams(params);</div><div class="line">           child.invalidate();</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
 
       
@@ -371,6 +371,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/05/05/watch/" rel="prev" title="watch">
+                watch <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -416,17 +420,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -441,7 +436,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -490,22 +485,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#工作中遇到的问题-2"><span class="nav-number">1.</span> <span class="nav-text">工作中遇到的问题(2)</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
