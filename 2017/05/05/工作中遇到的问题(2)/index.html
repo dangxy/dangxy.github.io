@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="工作中遇到的问题(1)1. 无法启动application 在android  4.4 版本 上出现这个问题">
+<meta name="description" content="工作中遇到的问题(2) 设置viewpagerIndicatior的宽度： 123456789101112131415161718192021222324252627282930public static void setIndicator(Context context, TabLayout tabs, int leftDip, int rightDip) &amp;#123;       Class&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="工作中遇到的问题(持续更新中)">
-<meta property="og:url" content="http://yoursite.com/2017/03/02/工作中遇到的问题(1)/index.html">
+<meta property="og:title" content="工作中遇到的问题(2)">
+<meta property="og:url" content="http://yoursite.com/2017/05/05/工作中遇到的问题(2)/index.html">
 <meta property="og:site_name" content="党学义的博客">
-<meta property="og:description" content="工作中遇到的问题(1)1. 无法启动application 在android  4.4 版本 上出现这个问题">
-<meta property="og:updated_time" content="2017-05-04T06:15:15.000Z">
+<meta property="og:description" content="工作中遇到的问题(2) 设置viewpagerIndicatior的宽度： 123456789101112131415161718192021222324252627282930public static void setIndicator(Context context, TabLayout tabs, int leftDip, int rightDip) &amp;#123;       Class&amp;">
+<meta property="og:updated_time" content="2017-05-05T12:48:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="工作中遇到的问题(持续更新中)">
-<meta name="twitter:description" content="工作中遇到的问题(1)1. 无法启动application 在android  4.4 版本 上出现这个问题">
+<meta name="twitter:title" content="工作中遇到的问题(2)">
+<meta name="twitter:description" content="工作中遇到的问题(2) 设置viewpagerIndicatior的宽度： 123456789101112131415161718192021222324252627282930public static void setIndicator(Context context, TabLayout tabs, int leftDip, int rightDip) &amp;#123;       Class&amp;">
 
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/02/工作中遇到的问题(1)/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/05/工作中遇到的问题(2)/"/>
 
 
 
@@ -252,7 +252,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/02/工作中遇到的问题(1)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/05/工作中遇到的问题(2)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dangxy">
@@ -273,7 +273,7 @@
             
             
               
-                工作中遇到的问题(持续更新中)
+                工作中遇到的问题(2)
               
             
           </h1>
@@ -288,8 +288,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-02T10:00:54+08:00">
-                2017-03-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-05T20:40:15+08:00">
+                2017-05-05
               </time>
             
 
@@ -323,12 +323,8 @@
       
 
       
-        <h2 id="工作中遇到的问题-1"><a href="#工作中遇到的问题-1" class="headerlink" title="工作中遇到的问题(1)"></a>工作中遇到的问题(1)</h2><h4 id="1-无法启动application-在android-4-4-版本-上出现这个问题"><a href="#1-无法启动application-在android-4-4-版本-上出现这个问题" class="headerlink" title="1. 无法启动application 在android  4.4 版本 上出现这个问题"></a>1. 无法启动application 在android  4.4 版本 上出现这个问题</h4> <a id="more"></a>
- <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> Process: com.jingge.microlesson, PID: 17879</div><div class="line">ava.lang.RuntimeException: Unable to instantiate application com.jingge.microlesson.MicroLessonApplication: java.lang.ClassNotFoundException: Didn't find class "com.jingge.microlesson.MicroLessonApplication" on path: DexPathList[[zip file "/data/app/com.jingge.microlesson-2.apk"],nativeLibraryDirectories=[/data/app-lib/com.jingge.microlesson-2, /vendor/lib, /system/lib, /data/datalib]]</div><div class="line"> at android.app.LoadedApk.makeApplication(LoadedApk.java:537)</div><div class="line">    at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4586)</div><div class="line">  at android.app.ActivityThread.access$1800(ActivityThread.java:139)</div><div class="line">  at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1316)</div><div class="line">   at android.os.Handler.dispatchMessage(Handler.java:102)</div><div class="line">at android.os.Looper.loop(Looper.java:136)</div><div class="line">at android.app.ActivityThread.main(ActivityThread.java:5314)</div><div class="line">at java.lang.reflect.Method.invokeNative(Native Method)</div><div class="line">at java.lang.reflect.Method.invoke(Method.java:515)</div><div class="line">at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:864)</div><div class="line">at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:680)</div><div class="line"> at dalvik.system.NativeStart.main(Native Method)</div><div class="line">Caused by: java.lang.ClassNotFoundException: Didn't find class "com.jingge.microlesson.MicroLessonApplication" on path: DexPathList[[zip file "/data/app/com.jingge.microlesson-2.apk"],nativeLibraryDirectories=[/data/app-lib/com.jingge.microlesson-2, /vendor/lib, /system/lib, /data/datalib]]</div><div class="line">at dalvik.system.BaseDexClassLoader.findClass(BaseDexClassLoader.java:56)</div><div class="line">at java.lang.ClassLoader.loadClass(ClassLoader.java:497)</div><div class="line"> at java.lang.ClassLoader.loadClass(ClassLoader.java:457)</div><div class="line">at android.app.Instrumentation.newApplication(Instrumentation.java:976)</div><div class="line">at android.app.LoadedApk.makeApplication(LoadedApk.java:532)</div><div class="line">at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4586) </div><div class="line"> at android.app.ActivityThread.access$1800(ActivityThread.java:139) </div><div class="line"> at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1316) </div><div class="line"> at android.os.Handler.dispatchMessage(Handler.java:102) </div><div class="line"> at android.os.Looper.loop(Looper.java:136) </div><div class="line"> at android.app.ActivityThread.main(ActivityThread.java:5314) </div><div class="line">at java.lang.reflect.Method.invokeNative(Native Method) </div><div class="line">at java.lang.reflect.Method.invoke(Method.java:515) </div><div class="line">at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:864) </div><div class="line"> at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:680) </div><div class="line">at dalvik.system.NativeStart.main(Native Method) </div><div class="line"></div><div class="line">See http://g.co/androidstudio/manifest-merger for more information about the manifest merger.</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    Suggestion: add 'tools:replace="android:allowBackup"' to &lt;application&gt; element at AndroidManifest.xml:55:5-594:19 to override</div></pre></td></tr></table></figure>
-<blockquote>
-<p>无法启动application 在android  4.4 版本 上出现这个问题   compile SDK 的版本改为13以上 就可以 了</p>
-</blockquote>
-<h3 id="2-Vitamio-支持64手机播放"><a href="#2-Vitamio-支持64手机播放" class="headerlink" title="2. Vitamio 支持64手机播放"></a>2. Vitamio 支持64手机播放</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">https://github.com/yixia/VitamioBundle/issues/305</div><div class="line"></div><div class="line">Hi, I searched on the net these days and finally found the solution!</div><div class="line">If you are using Android studio, just edit the gradle.properties in the root folder and addandroid.useDeprecatedNdk=true. Then edit the build.gradle file in your app's folder, set abiFilters as below:</div><div class="line">android &#123;</div><div class="line">    ....</div><div class="line">    defaultConfig &#123;</div><div class="line">        ....</div><div class="line">        ndk &#123;</div><div class="line">            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">网络出现的问题：</div><div class="line"></div><div class="line">sorry,this video cannot be played</div><div class="line">√√√√</div><div class="line"></div><div class="line">sorry,this video cannot be played</div><div class="line"></div><div class="line">android 5.0 权限拒绝 permission deny  解决办法：</div><div class="line">&lt;uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" /&gt;</div></pre></td></tr></table></figure>
+        <h3 id="工作中遇到的问题-2"><a href="#工作中遇到的问题-2" class="headerlink" title="工作中遇到的问题(2)"></a>工作中遇到的问题(2)</h3><p> 设置viewpagerIndicatior的宽度：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setIndicator</span><span class="params">(Context context, TabLayout tabs, <span class="keyword">int</span> leftDip, <span class="keyword">int</span> rightDip)</span> </span>&#123;</div><div class="line">       Class&lt;?&gt; tabLayout = tabs.getClass();</div><div class="line">       Field tabStrip = <span class="keyword">null</span>;</div><div class="line">       <span class="keyword">try</span> &#123;</div><div class="line">           tabStrip = tabLayout.getDeclaredField(<span class="string">"mTabStrip"</span>);</div><div class="line">       &#125; <span class="keyword">catch</span> (NoSuchFieldException e) &#123;</div><div class="line">           e.printStackTrace();</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       tabStrip.setAccessible(<span class="keyword">true</span>);</div><div class="line">       LinearLayout ll_tab = <span class="keyword">null</span>;</div><div class="line">       <span class="keyword">try</span> &#123;</div><div class="line">           ll_tab = (LinearLayout) tabStrip.get(tabs);</div><div class="line">       &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</div><div class="line">           e.printStackTrace();</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">int</span> left = (<span class="keyword">int</span>) (getDisplayMetrics(context).density * leftDip);</div><div class="line">       <span class="keyword">int</span> right = (<span class="keyword">int</span>) (getDisplayMetrics(context).density * rightDip);</div><div class="line"></div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ll_tab.getChildCount(); i++) &#123;</div><div class="line">           View child = ll_tab.getChildAt(i);</div><div class="line">           child.setPadding(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">           LinearLayout.LayoutParams params = <span class="keyword">new</span> LinearLayout.LayoutParams(<span class="number">0</span>, LinearLayout.LayoutParams.MATCH_PARENT, <span class="number">1</span>);</div><div class="line">           params.leftMargin = left;</div><div class="line">           params.rightMargin = right;</div><div class="line">           child.setLayoutParams(params);</div><div class="line">           child.invalidate();</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -365,8 +361,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/02/(Override）equlas和hashCode方法时应考虑的问题/" rel="next" title="(Override）equlas和hashCode方法时应考虑的问题">
-                <i class="fa fa-chevron-left"></i> (Override）equlas和hashCode方法时应考虑的问题
+              <a href="/2017/05/03/如何用一行代码初始化一个ArrayList/" rel="next" title="如何用一行代码初始化一个ArrayList">
+                <i class="fa fa-chevron-left"></i> 如何用一行代码初始化一个ArrayList
               </a>
             
           </div>
@@ -374,10 +370,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/02/what-issues-should-be-considered-when-overriding-equals-and-hashcode-in-java/" rel="prev" title="(Override）equlas和hashCode方法时应考虑的问题">
-                (Override）equlas和hashCode方法时应考虑的问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -508,7 +500,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#工作中遇到的问题-1"><span class="nav-number">1.</span> <span class="nav-text">工作中遇到的问题(1)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-无法启动application-在android-4-4-版本-上出现这个问题"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. 无法启动application 在android  4.4 版本 上出现这个问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Vitamio-支持64手机播放"><span class="nav-number">1.1.</span> <span class="nav-text">2. Vitamio 支持64手机播放</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#工作中遇到的问题-2"><span class="nav-number">1.</span> <span class="nav-text">工作中遇到的问题(2)</span></a></li></ol></div>
             
 
           </div>
