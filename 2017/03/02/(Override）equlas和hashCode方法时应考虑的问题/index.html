@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="javscript,test," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -90,17 +90,16 @@
 
 
 
-<meta name="description" content="##重写（Override）equlas和hashCode方法时应考虑的问题 ###理论上讲（编程语言、数学层面）equals() 定义了对象的相等关系（自反性、对称性、传递性）（有点抽象，更详细说明，请参考javadoc)) 。另外，它还具有一致性（也就是说，如果一个对象没有修改，那么对象的equals方法，应总是返回相同的值），此外，o.equals(null)应当总是返回false。hash">
-<meta name="keywords" content="javscript,test">
+<meta name="description" content="理论上讲（编程语言、数学层面）equals() 定义了对象的相等关系（自反性、对称性、传递性）（有点抽象，更详细说明，请参考javadoc)) 。另外，它还具有一致性（也就是说，如果一个对象没有修改，那么对象的equals方法，应总是返回相同的值），此外，o.equals(null)应当总是返回false。hashCode()（javadoc))也必须具备一致性的（也就是说，如果equal的结果没">
 <meta property="og:type" content="article">
-<meta property="og:title" content="(Override）equlas和hashCode方法时应考虑的问题">
+<meta property="og:title" content="equlas和hashCode方法时应考虑的问题">
 <meta property="og:url" content="http://yoursite.com/2017/03/02/(Override）equlas和hashCode方法时应考虑的问题/index.html">
 <meta property="og:site_name" content="党学义的博客">
-<meta property="og:description" content="##重写（Override）equlas和hashCode方法时应考虑的问题 ###理论上讲（编程语言、数学层面）equals() 定义了对象的相等关系（自反性、对称性、传递性）（有点抽象，更详细说明，请参考javadoc)) 。另外，它还具有一致性（也就是说，如果一个对象没有修改，那么对象的equals方法，应总是返回相同的值），此外，o.equals(null)应当总是返回false。hash">
-<meta property="og:updated_time" content="2017-05-04T06:10:59.000Z">
+<meta property="og:description" content="理论上讲（编程语言、数学层面）equals() 定义了对象的相等关系（自反性、对称性、传递性）（有点抽象，更详细说明，请参考javadoc)) 。另外，它还具有一致性（也就是说，如果一个对象没有修改，那么对象的equals方法，应总是返回相同的值），此外，o.equals(null)应当总是返回false。hashCode()（javadoc))也必须具备一致性的（也就是说，如果equal的结果没">
+<meta property="og:updated_time" content="2018-03-08T02:30:00.080Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="(Override）equlas和hashCode方法时应考虑的问题">
-<meta name="twitter:description" content="##重写（Override）equlas和hashCode方法时应考虑的问题 ###理论上讲（编程语言、数学层面）equals() 定义了对象的相等关系（自反性、对称性、传递性）（有点抽象，更详细说明，请参考javadoc)) 。另外，它还具有一致性（也就是说，如果一个对象没有修改，那么对象的equals方法，应总是返回相同的值），此外，o.equals(null)应当总是返回false。hash">
+<meta name="twitter:title" content="equlas和hashCode方法时应考虑的问题">
+<meta name="twitter:description" content="理论上讲（编程语言、数学层面）equals() 定义了对象的相等关系（自反性、对称性、传递性）（有点抽象，更详细说明，请参考javadoc)) 。另外，它还具有一致性（也就是说，如果一个对象没有修改，那么对象的equals方法，应总是返回相同的值），此外，o.equals(null)应当总是返回false。hashCode()（javadoc))也必须具备一致性的（也就是说，如果equal的结果没">
 
 
 
@@ -274,7 +273,7 @@
             
             
               
-                (Override）equlas和hashCode方法时应考虑的问题
+                equlas和hashCode方法时应考虑的问题
               
             
           </h1>
@@ -324,18 +323,13 @@
       
 
       
-        <p>##重写（Override）equlas和hashCode方法时应考虑的问题</p>
-<p>###理论上讲（编程语言、数学层面）<br>equals() 定义了对象的相等关系（自反性、对称性、传递性）（有点抽象，更详细说明，请参考<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#equals(java.lang.Object" target="_blank" rel="external">javadoc</a>)) 。<br>另外，它还具有一致性（也就是说，如果一个对象没有修改，那么对象的equals方法，应总是返回相同的值），此外，o.equals(null)应当总是返回false。<br>hashCode()（<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#hashCode(" target="_blank" rel="external">javadoc</a>))也必须具备一致性的（也就是说，如果equal的结果没有变，那么hashcode()也应总是返回相同的值）</p>
+        <h3 id="理论上讲（编程语言、数学层面）"><a href="#理论上讲（编程语言、数学层面）" class="headerlink" title="理论上讲（编程语言、数学层面）"></a>理论上讲（编程语言、数学层面）</h3><p>equals() 定义了对象的相等关系（自反性、对称性、传递性）（有点抽象，更详细说明，请参考<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#equals(java.lang.Object" target="_blank" rel="external">javadoc</a>)) 。<br>另外，它还具有一致性（也就是说，如果一个对象没有修改，那么对象的equals方法，应总是返回相同的值），此外，o.equals(null)应当总是返回false。<br>hashCode()（<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#hashCode(" target="_blank" rel="external">javadoc</a>))也必须具备一致性的（也就是说，如果equal的结果没有变，那么hashcode()也应总是返回相同的值）</p>
+<a id="more"></a>
 <p>总的来说，这两个方法的关系：</p>
 <p><strong>假如a.equals(b)，那么a.hashCode() 应等于b.hashCode()</strong></p>
-<p>###实践上讲<br>  <a id="more"></a>    ​<br><strong>如果你重写了其中一个方法，那么务必重写另外一个方法</strong></p>
-<p>equals()和hashCode()所计算的属性集（set of fields）应当是一样的<br>如何更快地重写这两个方法呢？</p>
+<h3 id="实践上讲"><a href="#实践上讲" class="headerlink" title="实践上讲"></a>实践上讲</h3>  <!-- more -->    ​<br><strong>如果你重写了其中一个方法，那么务必重写另外一个方法</strong><br><br>equals()和hashCode()所计算的属性集（set of fields）应当是一样的<br>如何更快地重写这两个方法呢？<br>1. 使用<a href="http://commons.apache.org/lang/" target="_blank" rel="external">Apache Commons Lang library</a>中的<a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/EqualsBuilder.html" target="_blank" rel="external">EqualsBuilder</a>、<a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/HashCodeBuilder.html" target="_blank" rel="external">HashCodeBuilder</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</div><div class="line">    <span class="comment">// ...</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> HashCodeBuilder(<span class="number">17</span>, <span class="number">31</span>). <span class="comment">// two randomly chosen prime numbers</span></div><div class="line">            <span class="comment">// if deriving: appendSuper(super.hashCode()).</span></div><div class="line">            append(name).</div><div class="line">            append(age).</div><div class="line">            toHashCode();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (!(obj <span class="keyword">instanceof</span> Person))</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">if</span> (obj == <span class="keyword">this</span>)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line"></div><div class="line">        Person rhs = (Person) obj;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> EqualsBuilder().</div><div class="line">            <span class="comment">// if deriving: appendSuper(super.equals(obj)).</span></div><div class="line">            append(name, rhs.name).</div><div class="line">            append(age, rhs.age).</div><div class="line">            isEquals();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ol>
-<li><p>使用<a href="http://commons.apache.org/lang/" target="_blank" rel="external">Apache Commons Lang library</a>中的<a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/EqualsBuilder.html" target="_blank" rel="external">EqualsBuilder</a>、<a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/HashCodeBuilder.html" target="_blank" rel="external">HashCodeBuilder</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</div><div class="line">    <span class="comment">// ...</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> HashCodeBuilder(<span class="number">17</span>, <span class="number">31</span>). <span class="comment">// two randomly chosen prime numbers</span></div><div class="line">            <span class="comment">// if deriving: appendSuper(super.hashCode()).</span></div><div class="line">            append(name).</div><div class="line">            append(age).</div><div class="line">            toHashCode();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (!(obj <span class="keyword">instanceof</span> Person))</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">if</span> (obj == <span class="keyword">this</span>)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line"></div><div class="line">        Person rhs = (Person) obj;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> EqualsBuilder().</div><div class="line">            <span class="comment">// if deriving: appendSuper(super.equals(obj)).</span></div><div class="line">            append(name, rhs.name).</div><div class="line">            append(age, rhs.age).</div><div class="line">            isEquals();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>如果你是用eclipse，可以在代码编辑区右键，然后选择 Source &gt; Generate hashCode() and equals()</p>
-</li>
+<li>如果你是用eclipse，可以在代码编辑区右键，然后选择 Source &gt; Generate hashCode() and equals()</li>
 </ol>
 <p><strong>另外请记得</strong></p>
 <p>当你使用一些基于Hash的 Collection 、 Map，例如HashSet, LinkedHashSet, HashMap, Hashtable, 、WeakHashMap等。在键值对被放到集合中之后，请确保其key值所对应的hashCode()是保持不变的。比较可靠的一个办法，是保持这些key是不可变的，这也能带来不少好处</p>
@@ -367,14 +361,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/javscript/" rel="tag"># javscript</a>
-          
-            <a href="/tags/test/" rel="tag"># test</a>
-          
-        </div>
-      
 
       
         
@@ -384,8 +370,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/02/工作中遇到的问题(1)/" rel="next" title="工作中遇到的问题(持续更新中)">
-                <i class="fa fa-chevron-left"></i> 工作中遇到的问题(持续更新中)
+              <a href="/2016/03/27/如何产生一个随机的字母数字串作为 session 的唯一标识符/" rel="next" title="如何产生一个随机的字母数字串作为 session 的唯一标识符">
+                <i class="fa fa-chevron-left"></i> 如何产生一个随机的字母数字串作为 session 的唯一标识符
               </a>
             
           </div>
@@ -394,8 +380,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/03/项目技术点选择/" rel="prev" title="技术选择">
-                技术选择 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/02/工作中遇到的问题(1)/" rel="prev" title="工作中遇到的问题(持续更新中)">
+                工作中遇到的问题(持续更新中) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -443,8 +429,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -459,7 +454,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -472,7 +467,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -509,6 +504,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#理论上讲（编程语言、数学层面）"><span class="nav-number">1.</span> <span class="nav-text">理论上讲（编程语言、数学层面）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实践上讲"><span class="nav-number">2.</span> <span class="nav-text">实践上讲</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -525,7 +536,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
