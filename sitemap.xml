@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/01/01/2020plan/</loc>
+    
+    <lastmod>2020-01-01T08:42:53.567Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/12/01/Android%20-6.0%20%E6%9D%83%E9%99%90/</loc>
     
     <lastmod>2018-03-10T16:52:53.514Z</lastmod>
