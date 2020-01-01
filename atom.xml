@@ -392,31 +392,6 @@
   </entry>
   
   <entry>
-    <title>技术选择</title>
-    <link href="http://yoursite.com/2017/05/03/%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E7%82%B9%E9%80%89%E6%8B%A9/"/>
-    <id>http://yoursite.com/2017/05/03/项目技术点选择/</id>
-    <published>2017-05-03T12:06:15.000Z</published>
-    <updated>2017-05-03T12:20:49.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="技术选择"><a href="#技术选择" class="headerlink" title="技术选择"></a>技术选择</h2><ol><li><p>Rxjava2</p></li><li><p>butterknife</p></li><li><p>rxandroid 用于Android的Rxjava绑定库</p></li><li><p>RxBinding：配合Rxjava处理控件异步调用</p><a id="more"></a></li><li><p>RxLifecycle：防止RxJava中subscription导致内存泄漏</p></li><li><p>RxPermissions：基于RxJava开发的用于帮助在Android 6.0中处理运行时权限检测</p></li><li><p>retrofit：目前最好用的网络通讯库，应该都用过吧</p></li><li><p>glide 能够很好的和activity进行生命周期绑定，减少内存溢出的风险</p></li><li><p>recyclerview-animators：RecyclerView的动画库，内置了非常多的动画效果</p></li><li><p>CircleImageView：</p></li><li><p>PhotoView：可根据手势进行缩放的图像库，这个也很常见</p></li><li><p>NumberProgressBar：性感的数字进度条</p></li><li><p>ijkplayer</p></li><li><p>Ormlite</p></li><li><p>Okgo下载</p></li><li><p>Luban压缩</p></li><li><p>BaseRecyclerViewAdapterHelper</p></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;技术选择&quot;&gt;&lt;a href=&quot;#技术选择&quot; class=&quot;headerlink&quot; title=&quot;技术选择&quot;&gt;&lt;/a&gt;技术选择&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Rxjava2&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;butterknife&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;rxandroid 用于Android的Rxjava绑定库&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;RxBinding：配合Rxjava处理控件异步调用&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>LayoutInflater</title>
     <link href="http://yoursite.com/2017/05/03/2016:7:10%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://yoursite.com/2017/05/03/2016:7:10学习笔记/</id>
@@ -437,6 +412,25 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;布局文件设置&lt;/p&gt;
 &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;android :themen=&lt;span class=&quot;string&quot;&gt;&quot;@android:style/Theme.NoTitleBar.Fullscreen&quot;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>如何用一行代码初始化一个ArrayList</title>
+    <link href="http://yoursite.com/2017/05/03/%E5%A6%82%E4%BD%95%E7%94%A8%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AAArrayList/"/>
+    <id>http://yoursite.com/2017/05/03/如何用一行代码初始化一个ArrayList/</id>
+    <published>2017-05-03T12:06:15.000Z</published>
+    <updated>2018-03-10T13:40:37.829Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>为了测试，我需要临时快速创建一个list。一开始我这样做：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; places = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">places.add(<span class="string">"Buenos Aires"</span>);</div><div class="line">places.add(<span class="string">"Córdoba"</span>);</div><div class="line">places.add(<span class="string">"La Plata"</span>);</div><div class="line"></div><div class="line">之后我重构了下</div><div class="line"></div><div class="line">ArrayList&lt;String&gt; places = <span class="keyword">new</span> ArrayList&lt;String&gt;(</div><div class="line">Arrays.asList(<span class="string">"Buenos Aires"</span>, <span class="string">"Córdoba"</span>, <span class="string">"La Plata"</span>));</div></pre></td></tr></table></figure></p><p>是否有更加简便的方法呢？<br><a id="more"></a></p><h3 id="回答"><a href="#回答" class="headerlink" title="回答"></a>回答</h3><h4 id="常见方式"><a href="#常见方式" class="headerlink" title="常见方式"></a>常见方式</h4><p>实际上，也许“最好”的方式，就是你写的这个方式，因为它不用再创建新的<code>List</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;();</div><div class="line">list.add(&quot;A&quot;);</div><div class="line">list.add(&quot;B&quot;);</div><div class="line">list.add(&quot;C&quot;);</div></pre></td></tr></table></figure></p><p>只是这个方式看上去要多写些代码，让人郁闷</p><h4 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h4><p>当然，还有其他方式，例如,写一个匿名内部类，然后在其中做初始化（也被称为 brace initialization）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;() &#123;&#123;</div><div class="line">    add(&quot;A&quot;);</div><div class="line">    add(&quot;B&quot;);</div><div class="line">    add(&quot;C&quot;);</div><div class="line">&#125;&#125;;</div></pre></td></tr></table></figure></p><p>但是，我不喜欢这个方式。只是为了做个初始化，却要在<code>ArrayList</code>的同一行后面加这么一坨代码。</p><h4 id="Arrays-asList"><a href="#Arrays-asList" class="headerlink" title="Arrays.asList"></a>Arrays.asList</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; places = Arrays.asList(&quot;Buenos Aires&quot;, &quot;Córdoba&quot;, &quot;La Plata&quot;);</div></pre></td></tr></table></figure><p>####Collections.singletonList<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; places = Collections.singletonList(&quot;Buenos Aires&quot;);</div></pre></td></tr></table></figure></p><p>注意：后面的这两种方式，得到的是一个定长的<code>List</code>(如果add操作会抛异常）。如果你需要一个不定长的<code>List</code>,可以这样做：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; places = new ArrayList&lt;&gt;(Arrays.asList(&quot;Buenos Aires&quot;, &quot;Córdoba&quot;, &quot;La Plata&quot;));</div></pre></td></tr></table></figure></p><p>stackoverflow链接：<br><a href="http://stackoverflow.com/questions/1005073/initialization-of-an-arraylist-in-one-line" target="_blank" rel="external">http://stackoverflow.com/questions/1005073/initialization-of-an-arraylist-in-one-line</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h3&gt;&lt;p&gt;为了测试，我需要临时快速创建一个list。一开始我这样做：&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;ArrayList&amp;lt;String&amp;gt; places = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayList&amp;lt;String&amp;gt;();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;places.add(&lt;span class=&quot;string&quot;&gt;&quot;Buenos Aires&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;places.add(&lt;span class=&quot;string&quot;&gt;&quot;Córdoba&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;places.add(&lt;span class=&quot;string&quot;&gt;&quot;La Plata&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;之后我重构了下&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;ArrayList&amp;lt;String&amp;gt; places = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayList&amp;lt;String&amp;gt;(&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Arrays.asList(&lt;span class=&quot;string&quot;&gt;&quot;Buenos Aires&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Córdoba&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;La Plata&quot;&lt;/span&gt;));&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;是否有更加简便的方法呢？&lt;br&gt;
     
     </summary>
     
