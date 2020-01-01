@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> git 常用的基本命令 · dangxy99的Blog</title><meta name="description" content="git 常用的基本命令 - dangxy"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.jpg"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="dangxy99的Blog"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.jpg" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li><li class="nav-list-item"><a href="https://github.com/dangxy" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">git 常用的基本命令</h1><div class="post-info">Feb 15, 2019</div><div class="post-content"><h1 id="git-常用的基本命令"><a href="#git-常用的基本命令" class="headerlink" title="git 常用的基本命令"></a>git 常用的基本命令</h1><p>#git/基础#</p>
+<h3 id="版本控制的概念"><a href="#版本控制的概念" class="headerlink" title="版本控制的概念:"></a>版本控制的概念:</h3><p>Version Control System - VCS</p>
+<ul>
+<li>中央式版本控制系统 <code>Centralized VCS</code></li>
+<li>分布式版本控制系统 <code>Distributed VCS</code></li>
+</ul>
+<a id="more"></a>
+<h3 id="status"><a href="#status" class="headerlink" title="status"></a>status</h3><p>status 是用来查看工作目录的当前状态的指令</p>
+<h3 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h3><p>提交的历史</p>
+<h3 id="Head"><a href="#Head" class="headerlink" title="Head"></a>Head</h3><p>其中这个括号里的 HEAD 是引用中最特殊的一个:它是指向当前 commit 的引用。所以它是指向当前commit的引用。当前 commit 在哪里,HEAD 就在哪里,这是一个永远自动指向当前 commit 的引用,所以你永远可以用Head来操作当前的commit<br>head 时当前git中的一个独特的引用 是唯一的，</p>
+<h3 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h3><p>HEAD 除了可以指向 commit，还可以指向一个 branch，当它指向某个 branch 的时候，会通过这个 branch 来间接地指向某个 commit；另外，当 HEAD 在提交时自动向前移动的时候，它会像一个拖钩一样带着它所指向的 branch 一起移动。</p>
+<p>例如上面的那张图里，HEAD -&gt; master 中的 master 就是一个 branch 的名字，而它左边的箭头 -&gt; 表示 HEAD 正指向它（当然，也会间接地指向它所指向的 commit）。</p>
+<ol>
+<li>创建： git  branch 名称</li>
+<li>切换branch  git checkout  feature1</li>
+<li>删除branch  git branch -d feature1<blockquote>
+<p>Head 指向的branch不能删除 如果要删除 先用checkout 把head指向其他的地方  </p>
+<h3 id="master"><a href="#master" class="headerlink" title="master"></a>master</h3><p>master ，其实是一个特殊的 branch：它是 Git 的默认 branch（俗称主 branch / 主分支）。<br>所谓的「默认 branch」，主要有两个特点：</p>
+</blockquote>
+</li>
+<li>新创建的 repository（仓库）是没有任何 commit 的。但在它创建第一个 commit 时，会把 master 指向它，并把 HEAD 指向 master。</li>
+<li>当有人使用 git clone 时，除了从远程仓库把 .git 这个仓库目录下载到工作目录中，还会 checkout （签出） master（checkout 的意思就是把某个 commit 作为当前 commit，把 HEAD 移动过去，并把工作目录的文件内容替换成这个 commit 所对应的内容）。<h3 id="push"><a href="#push" class="headerlink" title="push"></a>push</h3></li>
+<li>push 是把当前分支上传到远程仓库 并把这个branch路径的所有commit s 也一并上传<h3 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h3></li>
+<li>merge 指定一个commit  把它合并懂啊当前的commit来</li>
+<li>从目标 commit 和当前 commit (即 HEAD 所指向的 commit)分叉的位置起,把目标 commit<br>的路径上的所有 commit 的内容一并应用到当前 commit,然后自动生成一个新的 commit</li>
+<li>冲突</li>
+</ol>
+<ul>
+<li>当前分支和目标分支修改了同一部分的内容 git无法确定怎么合并  解决冲突后commit</li>
+<li>head 领先于目标commit git 什么都不做 空操作</li>
+<li>head 落后于目标commit  fast-forward<h3 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h3>远端仓库的内容用fetch取下来<h3 id="git-add"><a href="#git-add" class="headerlink" title="git add ."></a>git add .</h3>直接把工作目录下的所有改动全部放进暂缓区<h3 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h3>查看暂缓区和上一条commit的区别  git diff —staged<br>查看工作目录和上一条commit的区别 git  diff HEAD<h3 id="git-reset-—hard-head"><a href="#git-reset-—hard-head" class="headerlink" title="git reset  —hard head^"></a>git reset  —hard head^</h3>恢复到哪个commit</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/2019/03/01/Android-AsyncTask/" class="prev">上一篇</a><a href="/2018/03/08/Android-设计模式-观察者模式/" class="next">下一篇</a></div><div class="copyright"><p>© 2015 - 2020 <a href="http://yoursite.com">dangxy</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
